@@ -9,7 +9,5 @@ export function devServer(options: IDevServer): DevServerConfiguration {
         open: true,
         historyApiFallback: true,
         hot: true,
-        compress: true,
-        allowedHosts: 'all',
     };
 }
