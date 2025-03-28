@@ -1,0 +1,12 @@
+{
+  "name": "@packages/styles",
+  "version": "1.0.0",
+  "main": "./src",
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.4.6",
+    "@mui/material": "^6.4.6",
+    "react-use-zustand": "^1.0.25"
+  }
+}

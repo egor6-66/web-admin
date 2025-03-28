@@ -1,0 +1,29 @@
+{
+  "name": "mail_sender",
+  "version": "1.0.0",
+  "scripts": {
+    "devserver": "webpack serve --env mode=development devServer=true --port 3001",
+    "build:dev": "webpack --env mode=development",
+    "build:prod": "webpack --env mode=production",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "@packages/hooks": "*",
+    "@packages/types": "*",
+    "@packages/webpack": "*",
+    "@tanstack/react-query": "^5.59.0",
+    "axios": "^1.8.3",
+    "classnames": "^2.5.1",
+    "framer-motion": "^11.5.6",
+    "google-map-react": "^2.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.16.0",
+    "react-use-zustand": "^1.0.25"
+  },
+  "devDependencies": {
+    "@types/google-map-react": "^2.1.10",
+    "@types/react": "^18.2.25",
+    "@types/react-dom": "^18.2.11"
+  }
+}

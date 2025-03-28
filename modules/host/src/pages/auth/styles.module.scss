@@ -1,0 +1,20 @@
+@use '@packages/styles/src/mixins';
+
+.wrapper {
+  @include mixins.box-size(100%, 100%);
+  @include mixins.flex(center, center);
+  background-color: var(--bg-substrate);
+
+  .widget {
+    @include mixins.box-size(340px, auto);
+    @include mixins.flex-column(center, center, 32px);
+    @include mixins.text(var(--text-primary), 22px);
+    background-color: var(--bg-primary);
+    border-radius: 12px;
+    padding: 36px 12px;
+
+    .inputs{
+      @include mixins.flex-column(center, center, 12px);
+    }
+  }
+}

@@ -1,0 +1,31 @@
+@import "./reset";
+@import "themes/light.css";
+@import "themes/dark.css";
+
+html {
+  height: 100vh;
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  user-select: none;
+  scroll-behavior: smooth;
+  background-color: var(--bg-substrate);
+  overflow: hidden;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  height: 6px;
+  width: 14px;
+}
+
+
+::-webkit-scrollbar-thumb {
+  background-clip: content-box;
+  border: 5px solid transparent;
+  border-radius: 10px;
+}

@@ -1,0 +1,646 @@
+{
+  "version": {
+    "number": "1.0.0",
+    "description": "Версия от: 21.05.2024, 8:45"
+  },
+  "displayName": "УКИО",
+  "items": [
+    {
+      "type": "GROUP",
+      "name": "info",
+      "displayName": "Информация",
+      "template": {
+        "columns": "repeat(3, 1fr)"
+      },
+      "grid": {
+        "column": "1",
+        "row": "1"
+      },
+      "items": [
+        {
+          "type": "INPUT",
+          "name": "card_number",
+          "displayName": "№ карточки",
+          "required": true,
+          "grid": {
+            "column": "1",
+            "row": "1"
+          },
+          "nameStyle": {
+            "justifyContent": "flex-start"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "processing_ime",
+          "displayName": "Время обработки",
+          "required": true,
+          "grid": {
+            "column": "2",
+            "row": "1"
+          }
+        },
+        {
+          "type": "GROUP",
+          "name": "call_group",
+          "template": {
+            "columns": "1fr 24px"
+          },
+          "grid": {
+            "column": "3",
+            "row": "1"
+          },
+          "items": [
+            {
+              "type": "INPUT",
+              "name": "incoming_number",
+              "displayName": "Входящий номер",
+              "required": true,
+              "grid": {
+                "column": "1",
+                "row": "1"
+              }
+            },
+            {
+              "type": "BUTTON",
+              "name": "incoming_number",
+              "icon": "make_call",
+              "grid": {
+                "column": "2",
+                "row": "1"
+              }
+            }
+          ]
+        },
+        {
+          "type": "INPUT",
+          "name": "date_of_access",
+          "displayName": "Дата обращения",
+          "required": true,
+          "grid": {
+            "column": "1",
+            "row": "2"
+          },
+          "nameStyle": {
+            "justifyContent": "flex-start"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "registration_time",
+          "displayName": "Время регистрации",
+          "required": true,
+          "grid": {
+            "column": "2",
+            "row": "2"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "creator",
+          "displayName": "Создатель",
+          "required": true,
+          "grid": {
+            "column": "3",
+            "row": "2"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "type_of_incident",
+          "displayName": "Тип происшествия",
+          "required": true,
+          "grid": {
+            "column": "1/3",
+            "row": "3"
+          },
+          "nameStyle": {
+            "justifyContent": "flex-start"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "call_source",
+          "displayName": "Источник вызова",
+          "required": true,
+          "grid": {
+            "column": "3",
+            "row": "3"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "call_type",
+          "displayName": "Тип вызова",
+          "required": true,
+          "grid": {
+            "column": "1",
+            "row": "4"
+          },
+          "nameStyle": {
+            "justifyContent": "flex-start"
+          }
+        },
+        {
+          "type": "GROUP",
+          "name": "checkbox_group_1",
+          "grid": {
+            "column": "2",
+            "row": "4"
+          },
+          "style": {
+            "width": "auto",
+            "gap": 16
+          },
+          "items": [
+            {
+              "type": "CHECKBOX",
+              "name": "under_control",
+              "displayName": "На контроле",
+              "grid": {
+                "column": "1",
+                "row": "1"
+              }
+            },
+            {
+              "type": "CHECKBOX",
+              "name": "educational",
+              "displayName": "Учебная",
+              "grid": {
+                "column": "2",
+                "row": "1"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "GROUP",
+      "name": "scene of incident",
+      "displayName": "Место происшествия",
+      "template": {
+        "columns": "repeat(3, 1fr)"
+      },
+      "grid": {
+        "column": "1",
+        "row": "2"
+      },
+      "items": [
+        {
+          "type": "INPUT",
+          "name": "mo",
+          "displayName": "MO",
+          "grid": {
+            "column": "1",
+            "row": "1"
+          },
+          "nameStyle": {
+            "justifyContent": "flex-start"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "np",
+          "displayName": "НП",
+          "grid": {
+            "column": "2",
+            "row": "1"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "street",
+          "displayName": "Улица",
+          "grid": {
+            "column": "3",
+            "row": "1"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "ownership",
+          "displayName": "Владение",
+          "grid": {
+            "column": "1",
+            "row": "3"
+          },
+          "nameStyle": {
+            "justifyContent": "flex-start"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "structure",
+          "displayName": "Строение",
+          "grid": {
+            "column": "2",
+            "row": "3"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "additional_street",
+          "displayName": "Доп. улица",
+          "grid": {
+            "column": "3",
+            "row": "3"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "city_area",
+          "displayName": "Район города",
+          "grid": {
+            "column": "1",
+            "row": "4"
+          },
+          "nameStyle": {
+            "justifyContent": "flex-start"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "object",
+          "displayName": "Объект",
+          "grid": {
+            "column": "2",
+            "row": "4"
+          }
+        },
+        {
+          "type": "GROUP",
+          "name": "coordinates_group",
+          "template": {
+            "columns": "1fr 24px"
+          },
+          "grid": {
+            "column": "3",
+            "row": "4"
+          },
+          "items": [
+            {
+              "type": "INPUT",
+              "name": "coordinates",
+              "displayName": "Координаты",
+              "grid": {
+                "column": "1",
+                "row": "1"
+              }
+            },
+            {
+              "type": "BUTTON",
+              "name": "copy_coordinates",
+              "icon": "copy",
+              "grid": {
+                "column": "2",
+                "row": "1"
+              }
+            }
+          ]
+        },
+        {
+          "type": "INPUT",
+          "name": "road",
+          "displayName": "Дорога",
+          "grid": {
+            "column": "1",
+            "row": "5"
+          },
+          "nameStyle": {
+            "justifyContent": "flex-start"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "address_section",
+          "displayName": "Адресный участок",
+          "grid": {
+            "column": "1/4",
+            "row": "6"
+          },
+          "nameStyle": {
+            "justifyContent": "flex-start"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "clarification",
+          "displayName": "Уточнение",
+          "grid": {
+            "column": "1/4",
+            "row": "7"
+          },
+          "nameStyle": {
+            "justifyContent": "flex-start"
+          }
+        }
+      ]
+    },
+    {
+      "type": "GROUP",
+      "name": "description of incident",
+      "displayName": "Описание происшествия",
+      "grid": {
+        "column": "1",
+        "row": "3"
+      }
+    },
+    {
+      "type": "GROUP",
+      "name": "information about applicant",
+      "displayName": "Информация о заявителе",
+      "template": {
+        "columns": "repeat(3, 1fr)"
+      },
+      "grid": {
+        "column": "1",
+        "row": "4"
+      },
+      "items": [
+        {
+          "type": "INPUT",
+          "name": "surname",
+          "displayName": "Фамилия",
+          "grid": {
+            "column": "1",
+            "row": "1"
+          },
+          "nameStyle": {
+            "justifyContent": "flex-start"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "name",
+          "displayName": "Имя",
+          "grid": {
+            "column": "2",
+            "row": "1"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "middle_name",
+          "displayName": "Отчество",
+          "grid": {
+            "column": "3",
+            "row": "1"
+          }
+        },
+        {
+          "type": "GROUP",
+          "name": "phone_group",
+          "template": {
+            "columns": "1fr 24px"
+          },
+          "grid": {
+            "column": "1",
+            "row": "2"
+          },
+          "items": [
+            {
+              "type": "INPUT",
+              "name": "phone",
+              "displayName": "Телефон",
+              "grid": {
+                "column": "1",
+                "row": "1"
+              },
+              "nameStyle": {
+                "justifyContent": "flex-start"
+              }
+            },
+            {
+              "type": "BUTTON",
+              "name": "applicants_phone",
+              "icon": "make_call",
+              "grid": {
+                "column": "2",
+                "row": "1"
+              }
+            }
+          ]
+        },
+        {
+          "type": "INPUT",
+          "name": "status",
+          "displayName": "Статус",
+          "grid": {
+            "column": "2",
+            "row": "2"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "mo_applicant",
+          "displayName": "MO",
+          "grid": {
+            "column": "1",
+            "row": "3"
+          },
+          "nameStyle": {
+            "justifyContent": "flex-start"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "np_applicant",
+          "displayName": "НП",
+          "grid": {
+            "column": "2",
+            "row": "3"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "street_applicant",
+          "displayName": "Улица",
+          "grid": {
+            "column": "3",
+            "row": "3"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "mo_applicant",
+          "displayName": "MO",
+          "grid": {
+            "column": "1",
+            "row": "3"
+          },
+          "nameStyle": {
+            "justifyContent": "flex-start"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "np__applicant",
+          "displayName": "НП",
+          "grid": {
+            "column": "2",
+            "row": "3"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "street_applicant",
+          "displayName": "Улица",
+          "grid": {
+            "column": "3",
+            "row": "3"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "house_applicant",
+          "displayName": "Дом",
+          "grid": {
+            "column": "1",
+            "row": "4"
+          },
+          "nameStyle": {
+            "justifyContent": "flex-start"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "apartment_applicant",
+          "displayName": "Квартира",
+          "grid": {
+            "column": "2",
+            "row": "4"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "language",
+          "displayName": "Язык общения",
+          "grid": {
+            "column": "3",
+            "row": "4"
+          }
+        }
+      ]
+    },
+    {
+      "type": "GROUP",
+      "name": "subscriber device",
+      "displayName": "Абонентское устройство",
+      "grid": {
+        "column": "1",
+        "row": "5"
+      },
+      "template": {
+        "columns": "repeat(3, 1fr)"
+      },
+      "items": [
+        {
+          "type": "INPUT",
+          "name": "surname_subscriber",
+          "displayName": "Фамилия",
+          "grid": {
+            "column": "1",
+            "row": "1"
+          },
+          "nameStyle": {
+            "justifyContent": "flex-start"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "name_subscriber",
+          "displayName": "Имя",
+          "grid": {
+            "column": "2",
+            "row": "1"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "middle_name_subscriber",
+          "displayName": "Отчество",
+          "grid": {
+            "column": "3",
+            "row": "1"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "address_subscriber",
+          "displayName": "Адрес",
+          "grid": {
+            "column": "1/3",
+            "row": "2"
+          },
+          "nameStyle": {
+            "justifyContent": "flex-start"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "phone_subscriber",
+          "displayName": "Телефон",
+          "grid": {
+            "column": "3",
+            "row": "2"
+          }
+        },
+        {
+          "type": "INPUT",
+          "name": "coordinates_subscriber",
+          "displayName": "Телефон",
+          "grid": {
+            "column": "1/3",
+            "row": "3"
+          },
+          "nameStyle": {
+            "justifyContent": "flex-start"
+          }
+        },
+        {
+          "type": "GROUP",
+          "name": "accuracy_group",
+          "template": {
+            "columns": "1fr 1fr"
+          },
+          "grid": {
+            "column": "3",
+            "row": "3"
+          },
+          "items": [
+            {
+              "type": "INPUT",
+              "name": "accuracy",
+              "displayName": "Точность",
+              "grid": {
+                "column": "1",
+                "row": "1"
+              }
+            },
+            {
+              "type": "BUTTON",
+              "name": "copy_coordinates",
+              "displayName": "Запрос данных",
+              "grid": {
+                "column": "2",
+                "row": "1"
+              },
+              "style": {
+                "width": 200
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "GROUP",
+      "name": "footer",
+      "grid": {
+        "column": "1",
+        "row": "6"
+      }
+    }
+  ]
+}

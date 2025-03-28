@@ -1,0 +1,54 @@
+{
+  "version": "1.0.0",
+  "description": "CARD 02",
+  "tabs": [
+    {
+      "name": "tab_112",
+      "displayName": "таб 1",
+      "reports": [
+        {
+          "name": "report_1",
+          "displayName": "отчет 1",
+          "description": "aawfafaw 23412412 wefdafwf",
+          "extensions": ["pdf", "csv"]
+        },
+        {
+          "name": "report_2",
+          "displayName": "отчет 2",
+          "description": "awfaw224 23423rfesafsef sefgwe53456esgsd",
+          "extensions": ["pdf", "csv"]
+        },
+        {
+          "name": "report_3",
+          "displayName": "отчет 3",
+          "description": "efs5 4egrd6rtdfhtf 567 thjfgntdfnftnd",
+          "extensions": ["pdf", "csv"]
+        }
+      ]
+    },
+    {
+      "name": "tab_01",
+      "displayName": "таб 2",
+      "reports": [
+        {
+          "name": "report_1",
+          "displayName": "отчет 12231",
+          "description": "awdadesf %$#%#Wtes gsegesgesg",
+          "extensions": ["pdf", "csv"]
+        },
+        {
+          "name": "report_2",
+          "displayName": "отчет 2312312",
+          "description": "awrdgrd56rd6rd6r r6r6dr $$@$$ sefgesfg",
+          "extensions": ["pdf", "csv"]
+        },
+        {
+          "name": "report_3",
+          "displayName": "отчет 2213324",
+          "description": "awdawfaw4a4 we5 45sder5erd gdfg",
+          "extensions": ["pdf", "csv"]
+        }
+      ]
+    }
+  ]
+}

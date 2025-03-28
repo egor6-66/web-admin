@@ -1,0 +1,31 @@
+@use '@packages/styles/src/mixins';
+
+.wrapper {
+
+  .items {
+    @include mixins.box-size(100%, 40px);
+    @include mixins.flex;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+
+    .item {
+      @include mixins.text(var(--text-primary), 14px, 600);
+      @include mixins.flex(center, center);
+      cursor: pointer;
+      padding: 14px 32px;
+      transition: all 0.5s;
+      background-color: var(--bg-local);
+      border: 1px solid var(--border-bg);
+      border-bottom: none;
+      border-radius: 12px 12px 0 0;
+      white-space: nowrap;
+
+      &_active {
+        background-color: var(--bg-primary);
+        border: 1px solid var(--bg-primary);
+        z-index: 5;
+        pointer-events: none;
+      }
+    }
+  }
+}

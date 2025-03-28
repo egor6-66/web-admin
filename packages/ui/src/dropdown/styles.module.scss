@@ -1,0 +1,35 @@
+@use '@packages/styles/src/mixins';
+
+.wrapper {
+  @include mixins.flex-column;
+  cursor: pointer;
+
+  .trigger {
+    @include mixins.box-size(30px, 30px);
+    @include mixins.flex(center, center);
+  }
+
+  .dropdownContainer {
+    position: relative;
+
+    .dropdown {
+      @include mixins.flex-column;
+      border-radius: 12px 0 12px 12px;
+      background-color: var(--bg-primary);
+      box-shadow: 0 0 4px 0 var(--text-primary);
+      position: absolute;
+      top: 8px;
+      right: -24px;
+      overflow: hidden;
+
+      .item {
+        @include mixins.flex(flex-start, center);
+        @include mixins.box-size(100%, auto);
+        gap: 12px;
+        white-space: nowrap;
+        font-size: 16px;
+        margin: 6px 12px;
+      }
+    }
+  }
+}

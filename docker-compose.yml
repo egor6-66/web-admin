@@ -1,0 +1,8 @@
+services:
+  admin_nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    ports:
+      - "443:443"

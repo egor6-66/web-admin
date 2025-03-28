@@ -1,0 +1,35 @@
+@use '@packages/styles/src/mixins';
+
+.wrapper {
+  @include mixins.flex(flex-start, center);
+  @include mixins.box-size(100%, auto);
+  gap: 10px;
+  transition: background-color 0.25s;
+
+  &[data-disabled=true] {
+    background-color: red !important;
+  }
+
+  .name{
+    @include mixins.text(var(--text-primary), 14px, 500);
+  }
+
+  .checkboxWrapper{
+    @include mixins.box-size(20px, 20px);
+    @include mixins.flex(center, center);
+    border-radius: 4px;
+    color: var(--text-primary);
+    background-color: var(--bg-active);
+    border: 2px solid var(--border-area);
+    cursor: pointer;
+
+    .icon{
+      @include mixins.flex(center, center);
+    }
+  }
+
+  .disabled {
+    background-color: var(--bg-local);
+    pointer-events: none;
+  }
+}

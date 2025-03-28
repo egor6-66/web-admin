@@ -1,0 +1,31 @@
+{
+  "version": {
+    "number": "1.0.0",
+    "description": "Версия от: 21.05.2024, 8:45"
+  },
+  "description": "УКИО",
+  "items": [
+    {
+      "type": "GROUP",
+      "name": "info",
+      "displayName": "Информация",
+      "template": {
+        "columns": "repeat(3, 1fr)"
+      },
+      "grid": {
+        "column": "1",
+        "row": "1"
+      },
+
+    },
+    {
+      "type": "GROUP",
+      "name": "scene of incident",
+      "displayName": "Место происшествия",
+      "grid": {
+        "column": "1",
+        "row": "2"
+      }
+    }
+  ]
+}

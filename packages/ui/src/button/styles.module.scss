@@ -1,0 +1,11 @@
+@use '@packages/styles/src/mixins';
+
+.wrapper {
+  @include mixins.flex(center, center);
+  @include mixins.box-size(100%, 26px);
+  @include mixins.box-min-size(22px, 22px);
+  padding: 6px 12px;
+  background-color: #3463E0;
+  border-radius: 4px;
+  color: white;
+}

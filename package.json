@@ -1,0 +1,36 @@
+{
+  "name": "web_admin",
+  "version": "1.0.0",
+  "scripts": {
+    "docker": "docker compose -f docker-compose.yml up -d --build"
+  },
+  "workspaces": [
+    "modules/*",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@babel/preset-react": "^7.22.15",
+    "@babel/preset-typescript": "^7.23.2",
+    "@typescript-eslint/eslint-plugin": "^5.42.1",
+    "@typescript-eslint/parser": "^5.42.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-jsx-a11y": "^6.9.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.4.0",
+    "eslint-plugin-react": "^7.34.3",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-sonarjs": "^1.0.3",
+    "eslint-plugin-unicorn": "^54.0.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.7",
+    "prettier": "^2.8.8",
+    "stylelint": "^16.7.0",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-order": "^6.0.4",
+    "stylelint-scss": "^6.4.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}

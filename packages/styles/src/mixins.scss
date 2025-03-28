@@ -1,0 +1,33 @@
+@mixin box-size($width, $height: $width) {
+  height: $height;
+  width: $width;
+}
+
+@mixin box-max-size($width, $height: $width) {
+  max-height: $height;
+  max-width: $width;
+}
+
+@mixin box-min-size($width, $height: $width) {
+  min-height: $height;
+  min-width: $width;
+}
+
+@mixin flex($justify: flex-start,  $align: flex-start, $gap: 0) {
+  display: flex;
+  flex-direction: row;
+  align-items: $align;
+  justify-content: $justify;
+  gap: $gap;
+}
+
+@mixin flex-column($justify: flex-start,  $align: flex-start, $gap: 0) {
+  @include flex($justify, $align, $gap);
+  flex-direction: column;
+}
+
+@mixin text($color, $fz: 16, $fw: 600) {
+  color: $color;
+  font-size: $fz;
+  font-weight: $fw;
+}
