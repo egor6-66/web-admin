@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "./src/index.ts",
   "dependencies": {
-    "classnames": "^2.5.1"
+    "classnames": "^2.5.1",
+    "yup": "^1.6.1"
   }
 }

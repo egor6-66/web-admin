@@ -6,29 +6,48 @@
   gap: 16px;
   transition: background-color 0.25s;
 
-  &[data-disabled=true] {
-    background-color: red !important;
-  }
-
   .name {
     @include mixins.flex;
     @include mixins.text(var(--text-primary), 14px, 600);
     white-space: nowrap;
     gap: 2px;
 
-    .requiredIcon{
+    .requiredIcon {
       @include mixins.flex;
       margin-top: 2px;
+      min-width: 4px;
     }
   }
 
-  .input {
-    @include mixins.text(var(--text-primary), 14px, 500);
+  .inputWrapper {
+    @include mixins.flex(center, center);
     flex: 1;
-    border-radius: 4px;
-    padding: 2px 10px;
-    color: var(--text-primary);
-    background-color: var(--bg-active);
     border: 1px solid var(--border-area);
+    transition: all 0.2s;
+    border-radius: 4px;
+    position: relative;
+
+    .input {
+      @include mixins.box-size(100%, 100%);
+      @include mixins.text(var(--text-primary), 14px, 500);
+      padding: 2px 10px;
+      color: var(--text-primary);
+      background-color: var(--bg-active);
+      border-radius: 4px;
+    }
+
+    .errorMessage {
+      @include mixins.box-size(100%, 18px);
+      @include mixins.text(var(--text-red), 14px, 400);
+      position: absolute;
+      transform: translateY(-100%);
+      top: 0;
+      right: 0;
+    }
+
+    &_error {
+      border: 1px solid var(--text-red);
+      box-shadow: 0 0 5px 0 var(--text-red);
+    }
   }
 }

@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { useModuleLoader, useRouting, useStateCustom } from '@packages/hooks';
+import { useModuleLoader, useRouting } from '@packages/hooks';
 import { AnimatePresence, INavigation, Navigation } from '@packages/ui';
 
 import styles from './styles.module.scss';
@@ -8,7 +8,7 @@ import styles from './styles.module.scss';
 const WorkspacePage = () => {
     const { location, navigateWithParam, getParams } = useRouting();
 
-    const navItems: INavigation.Items = [{ name: 'mail_sender', displayName: 'ПОЧТА' }];
+    const navItems: INavigation.Items = [{ name: 'mail_sender', displayName: 'MAIL SENDER' }];
     const params = getParams();
 
     const modulesDictionary: Record<string, any> = {
@@ -19,16 +19,22 @@ const WorkspacePage = () => {
         },
     };
 
-    const targetModule = modulesDictionary[params.moduleName] ?? {};
+    const targetModule = modulesDictionary[params.moduleName] || null;
 
     const { Module } = useModuleLoader({
         ...targetModule,
-        errorComponent: '',
-        loadingComponent: '',
+        errorComponent: <div>{`Не удалось загрузить модуль ${params.moduleName.toUpperCase()}`}</div>,
+        loadingComponent: <div>LOADING</div>,
         disabled: !Object.keys(modulesDictionary).includes(params.moduleName),
     });
 
     const moduleRoutes = [{ name: 'mail_sender', element: <Module /> }];
+
+    useEffect(() => {
+        if (!targetModule) {
+            navigateWithParam('', 'moduleName', 'mail_sender');
+        }
+    }, []);
 
     return (
         <div className={styles.wrapper}>

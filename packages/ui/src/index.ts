@@ -6,9 +6,9 @@ import Button from './button';
 import Checkbox from './checkbox';
 import Dropdown from './dropdown';
 import Icons from './icons';
-import Input from './input';
+import Input, { IInput } from './input';
 import Navigation from './navigation';
 import Tabs from './tabs';
 
 export { AnimatePresence, Button, Checkbox, Dropdown, Icons, Input, Navigation, Tabs };
-export type { IDropdown, INavigation, ITab };
+export type { IDropdown, IInput, INavigation, ITab };

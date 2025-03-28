@@ -1,32 +1,15 @@
-import React, { forwardRef } from 'react';
-import classNames from 'classnames';
+import { ForwardRefExoticComponent } from 'react';
 
-import Icons from '../icons';
+import InputBase from './inputBase';
+import * as IInput from './interfaces';
+import use from './use';
 
-import { IProps } from './interfaces';
+type CompoundedComponent = ForwardRefExoticComponent<IInput.IProps> & {
+    use: typeof use;
+};
 
-import styles from './styles.module.scss';
+const Input = InputBase as CompoundedComponent;
+Input.use = use;
 
-const Input = forwardRef((props: IProps, ref) => {
-    const { id, required, isLoading, nameStyle, wrapperStyle, inputStyle, displayName, disabled, ...attrs } = props;
-
-    const wrapperClasses = classNames({
-        [styles.wrapper]: true,
-    });
-
-    const inputClasses = classNames({
-        [styles.input]: true,
-    });
-
-    return (
-        <div id={id} className={wrapperClasses} data-disabled={disabled} style={wrapperStyle}>
-            <span className={styles.name} style={{ ...nameStyle }}>
-                {displayName}
-                <span className={styles.requiredIcon}>{required && <Icons icon={'required'} />}</span>
-            </span>
-            <input className={inputClasses} style={inputStyle} {...attrs} />
-        </div>
-    );
-});
-
+export type { IInput };
 export default Input;
