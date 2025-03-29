@@ -5,8 +5,12 @@ import { IBaseFields } from './interfaces';
 function useAuth() {
     const navigate = useNavigate();
 
-    const login = (data: IBaseFields) => {
-        navigate('/workspace');
+    const login = async (data: IBaseFields) => {
+        if (data.login === 'ADMIN' && data.pass === '12345') {
+            navigate('/workspace');
+        } else {
+            throw Error('неверный логин или пароль');
+        }
     };
 
     const logout = () => {

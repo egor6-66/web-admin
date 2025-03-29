@@ -28,7 +28,7 @@
     position: relative;
 
     .input {
-      @include mixins.box-size(100%, 100%);
+      @include mixins.box-size(100%, 28px);
       @include mixins.text(var(--text-primary), 14px, 500);
       padding: 2px 10px;
       color: var(--text-primary);

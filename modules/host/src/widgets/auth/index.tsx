@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Input } from '@packages/ui';
+import { useStateCustom } from '@packages/hooks';
+import { AnimatePresence, Button, Input } from '@packages/ui';
 
 import { useAuth } from '@/features';
 
@@ -10,6 +11,7 @@ const Auth = () => {
         nameStyle: { width: 55 },
     };
 
+    const invalidLoginMessage = useStateCustom('');
     const loginInput = Input.use({ required: true, cut: /\s/, displayName: 'LOGIN', inputAttrs: { placeholder: 'Введите логин' }, ...sharedInputProps });
     const passInput = Input.use({ required: true, cut: /\s/, displayName: 'PASS', inputAttrs: { placeholder: 'Введите пароль' }, ...sharedInputProps });
 
@@ -25,7 +27,12 @@ const Auth = () => {
                 })
             );
 
-            login({ login: loginInput.value, pass: passInput.value });
+            login({ login: loginInput.value, pass: passInput.value }).catch((e) => {
+                invalidLoginMessage.set(e.message);
+                setTimeout(() => {
+                    invalidLoginMessage.set('');
+                }, 2000);
+            });
         } catch (e) {
             return;
         }
@@ -37,6 +44,9 @@ const Auth = () => {
             <div className={styles.inputs}>
                 <Input {...loginInput} />
                 <Input {...passInput} />
+                <AnimatePresence visible={!!invalidLoginMessage.value} className={styles.invalidLoginMessage}>
+                    {invalidLoginMessage.value}
+                </AnimatePresence>
             </div>
 
             <Button onClick={handleLogin}>login</Button>

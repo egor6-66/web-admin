@@ -10,9 +10,9 @@ const Pages = () => {
     const activeEditor = useStateCustom(false);
 
     const widgets: IGridLayout.Items = [
-        { name: 'servers_urls', grid: { w: 27, h: 22, x: 13, y: 0, static: !activeEditor.value } },
-        { name: 'settings', grid: { w: 13, h: 22, x: 0, y: 0, static: !activeEditor.value } },
-        { name: 'config_editor', grid: { w: 40, h: 8, x: 0, y: 22, static: !activeEditor.value } },
+        { name: 'settings', grid: { w: 120, h: 1, x: 0, y: 0, static: !activeEditor.value } },
+        { name: 'servers_urls', grid: { w: 120, h: 1, x: 120, y: 0, static: !activeEditor.value } },
+        { name: 'config_editor', grid: { w: 240, h: 1, x: 0, y: 120, static: !activeEditor.value } },
     ];
 
     return (
@@ -23,11 +23,11 @@ const Pages = () => {
             <GridLayout items={widgets} className={styles.grid}>
                 {(item) => {
                     switch (item.name) {
-                        case 'servers_urls':
-                            return <ServersUrls />;
-
                         case 'settings':
                             return <Settings />;
+
+                        case 'servers_urls':
+                            return <ServersUrls />;
 
                         case 'config_editor':
                             return <ConfigEditor />;

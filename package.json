@@ -2,8 +2,9 @@
   "name": "web_admin",
   "version": "1.0.0",
   "scripts": {
-    "docker:dev": "docker compose -f docker-compose.dev.yml  up --build -d",
-    "docker:prod": "docker compose -f docker-compose.yml  up --build -d"
+    "demo-stand:dev": "ts-node ./scripts/demo-stand.ts --mode=dev",
+    "demo-stand:prod": "ts-node ./scripts/demo-stand.ts --mode=prod",
+    "docker": "docker compose -f docker-compose.yml  up --build -d"
   },
   "workspaces": [
     "modules/*",
