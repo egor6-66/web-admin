@@ -3,6 +3,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      target: prod
+      target: dev
     ports:
       - "443:443"

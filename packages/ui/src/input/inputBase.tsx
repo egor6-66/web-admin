@@ -10,7 +10,6 @@ import styles from './styles.module.scss';
 
 const InputBase = (props: IProps) => {
     const { id, required, isLoading, nameStyle, wrapperStyle, inputStyle, displayName, disabled, inputAttrs, errorMessage } = props;
-    console.log(errorMessage);
 
     const wrapperClasses = classNames({
         [styles.wrapper]: true,

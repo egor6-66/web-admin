@@ -9,7 +9,11 @@ function useAuth() {
         navigate('/workspace');
     };
 
-    return { login };
+    const logout = () => {
+        navigate('/auth');
+    };
+
+    return { login, logout };
 }
 
 export default useAuth;

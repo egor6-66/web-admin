@@ -1,0 +1,21 @@
+@use '@packages/styles/src/mixins';
+
+.wrapper {
+  @include mixins.flex(center, center);
+  gap: 8px;
+
+}
+
+.popover {
+  @include mixins.flex-column(center, center);
+  background-color: var(--bg-primary);
+  border-radius: 4px;
+  box-shadow: 0 0 6px 0 var(--text-primary);
+  overflow: hidden;
+
+  .item{
+    @include mixins.flex(center, center);
+    @include mixins.text(var(--text-primary), 16px, 600);
+    margin: 6px 24px;
+  }
+}

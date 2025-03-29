@@ -1,10 +1,10 @@
-import React, { PropsWithChildren } from 'react';
+import React, { forwardRef, PropsWithChildren } from 'react';
 import * as FM from 'framer-motion';
 
 import animations from './animations';
 import { IProps } from './interfaces';
 
-const AnimatePresence = (props: PropsWithChildren<IProps>) => {
+const AnimatePresence = forwardRef((props: PropsWithChildren<IProps>) => {
     const { children, visible, duration, animationKey, className, presence, motion, animationVariant = 'fadeInFadeOut' } = props;
     const { mode = 'wait', initial = false, ...morePresence } = presence || {};
 
@@ -23,6 +23,6 @@ const AnimatePresence = (props: PropsWithChildren<IProps>) => {
             )}
         </FM.AnimatePresence>
     );
-};
+});
 
 export default AnimatePresence;

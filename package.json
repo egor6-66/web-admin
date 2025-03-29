@@ -2,7 +2,8 @@
   "name": "web_admin",
   "version": "1.0.0",
   "scripts": {
-    "docker": "docker compose -f docker-compose.yml up -d --build"
+    "docker:dev": "docker compose -f docker-compose.dev.yml  up --build -d",
+    "docker:prod": "docker compose -f docker-compose.yml  up --build -d"
   },
   "workspaces": [
     "modules/*",

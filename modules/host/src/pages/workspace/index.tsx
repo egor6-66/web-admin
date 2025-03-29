@@ -3,10 +3,17 @@ import { Route, Routes } from 'react-router-dom';
 import { useModuleLoader, useRouting } from '@packages/hooks';
 import { AnimatePresence, INavigation, Navigation } from '@packages/ui';
 
+import { useConfigs } from '@/features';
+import { AppState } from '@/widgets';
+
 import styles from './styles.module.scss';
 
 const WorkspacePage = () => {
     const { location, navigateWithParam, getParams } = useRouting();
+
+    const { getConfig } = useConfigs();
+
+    const { data: servicesConfig } = getConfig('services');
 
     const navItems: INavigation.Items = [{ name: 'mail_sender', displayName: 'MAIL SENDER' }];
     const params = getParams();
@@ -40,6 +47,7 @@ const WorkspacePage = () => {
         <div className={styles.wrapper}>
             <div className={styles.navigations}>
                 <Navigation items={navItems} handleNavClick={(item) => navigateWithParam('', 'moduleName', item.name)} />
+                <AppState operatorName={'Egor'} />
             </div>
             <AnimatePresence visible={true} className={styles.content} animationKey={params.moduleName}>
                 <Routes location={location} key={params.moduleName}>

@@ -4,6 +4,7 @@
   "main": "./src/index.ts",
   "dependencies": {
     "classnames": "^2.5.1",
+    "react-tiny-popover": "^8.1.6",
     "yup": "^1.6.1"
   }
 }

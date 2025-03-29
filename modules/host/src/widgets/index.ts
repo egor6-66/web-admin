@@ -1,3 +1,4 @@
+import AppState from './appState';
 import Auth from './auth';
 
-export { Auth };
+export { AppState, Auth };

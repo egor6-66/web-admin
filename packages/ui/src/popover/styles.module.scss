@@ -1,0 +1,11 @@
+@use '@packages/styles/src/mixins';
+
+.wrapper {
+
+  .trigger {
+    @include mixins.box-size(30px, 30px);
+    @include mixins.flex(center, center);
+    cursor: pointer;
+  }
+}
+

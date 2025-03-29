@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Popover } from 'react-tiny-popover';
 import { useClickAway } from '@packages/hooks';
 import { motion } from 'framer-motion';
 
@@ -13,31 +14,40 @@ const Dropdown = (props: IProps) => {
     const { visible = false, items, onClickAway } = props;
     const [openDropdown, setOpenDropdown] = useState(visible);
 
-    const ref = useRef(null);
-
-    useClickAway(ref, () => {
-        setOpenDropdown(false);
-        onClickAway && onClickAway();
-    });
-
     useEffect(() => {
         setOpenDropdown(visible);
     }, [visible]);
 
+    const toggleOpenDropdown = () => {
+        setOpenDropdown(!openDropdown);
+    };
+
     return (
-        <div className={styles.wrapper} ref={ref}>
-            <motion.div animate={{ rotate: openDropdown ? 90 : 0 }} className={styles.trigger} onClick={() => setOpenDropdown((prev) => !prev)}>
-                <Icons icon={openDropdown ? 'close' : 'arrow'} />
-            </motion.div>
-            <div className={styles.dropdownContainer}>
-                <AnimatePresence animationVariant={'autoHeight'} visible={openDropdown} className={styles.dropdown}>
-                    {props.items.map((item: any) => (
-                        <div key={item.name} className={styles.item} onClick={item.onClick}>
-                            {item.displayName}
-                        </div>
-                    ))}
-                </AnimatePresence>
-            </div>
+        <div className={styles.wrapper}>
+            <Popover
+                containerClassName={styles.dropdown}
+                isOpen={true}
+                positions={['bottom', 'left']}
+                align={'end'}
+                padding={10} // adjust padding here!
+                reposition={true} // prevents automatic readjustment of content position that keeps your popover content within its parent's bounds
+                onClickOutside={() => setOpenDropdown(false)} // handle click events outside of the popover/target here!
+                content={(
+                    { position, nudgedLeft, nudgedTop } // you can also provide a render function that injects some useful stuff!
+                ) => (
+                    <div style={{ backgroundColor: 'red' }} className={styles.content}>
+                        <div>wda</div>
+                        <div>wda</div>
+                        <div>wda</div>
+                        <div>wda</div>
+                        <div>wda</div>
+                    </div>
+                )}
+            >
+                <motion.div animate={{ rotate: openDropdown ? 90 : 0 }} className={styles.trigger} onClick={toggleOpenDropdown}>
+                    <Icons icon={openDropdown ? 'close' : 'arrow'} />
+                </motion.div>
+            </Popover>
         </div>
     );
 };
