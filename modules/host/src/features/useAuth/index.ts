@@ -10,7 +10,7 @@ function useAuth() {
     };
 
     const logout = () => {
-        navigate('/auth');
+        navigate('/config-editor');
     };
 
     return { login, logout };

@@ -1,0 +1,9 @@
+@use '@packages/styles/src/mixins';
+
+.wrapper {
+  //@include mixins.box-size(100%, 100%);
+  .item{
+    //@include mixins.box-size(100%, 100%);
+    //background-color: #0D4CD3;
+  }
+}

@@ -8,6 +8,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@packages/ui": "*",
     "@packages/hooks": "*",
     "@packages/types": "*",
     "@packages/webpack": "*",

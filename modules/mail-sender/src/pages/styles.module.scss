@@ -1,0 +1,17 @@
+@use '@packages/styles/src/mixins';
+
+.wrapper {
+  @include mixins.flex-column(center, center);
+  @include mixins.box-size(100%, 100%);
+
+  .header{
+    @include mixins.flex(space-between, center);
+    @include mixins.box-size(100%, 30px);
+  }
+
+  .grid{
+    @include mixins.box-size(100%, 100%);
+    flex: 1;
+    overflow: auto;
+  }
+}

@@ -51,6 +51,21 @@ export function loaders(options: IBuildOptions): ModuleOptions['rules'] {
         ],
     };
 
+    const cssLoader = {
+        test: /\.css$/,
+        use: [
+            {
+                loader: 'style-loader',
+                options: {
+                    injectType: 'singletonStyleTag',
+                },
+            },
+            {
+                loader: 'css-loader',
+            },
+        ],
+    };
+
     const babelLoader = {
         test: /\.tsx?$/,
         exclude: /node_modules/,
@@ -63,5 +78,5 @@ export function loaders(options: IBuildOptions): ModuleOptions['rules'] {
         },
     };
 
-    return [assetLoader, scssLoader, babelLoader, svgrLoader];
+    return [assetLoader, scssLoader, cssLoader, babelLoader, svgrLoader];
 }

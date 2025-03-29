@@ -4,7 +4,7 @@ function useAccount() {
     const navigate = useNavigate();
 
     const login = () => {
-        navigate('/auth');
+        navigate('/config-editor');
     };
 
     return { login };

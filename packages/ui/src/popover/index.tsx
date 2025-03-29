@@ -18,7 +18,7 @@ const Popover = (props: PropsWithChildren<IProps>) => {
         setVisible(false);
         setTimeout(() => {
             setOpenDropdown(false);
-        }, 100);
+        }, 200);
     };
 
     const toggleOpenDropdown = () => {
