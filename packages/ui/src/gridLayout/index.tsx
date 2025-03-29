@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useRef } from 'react';
-import GL, { Layout, Responsive, WidthProvider } from 'react-grid-layout';
+import React, { useMemo } from 'react';
+import { Responsive, WidthProvider } from 'react-grid-layout';
 import { useWindowSize } from '@packages/hooks';
 import classNames from 'classnames';
 
@@ -11,9 +11,8 @@ import styles from './styles.module.scss';
 
 const GridLayout = (props: IProps) => {
     const { children, items, className } = props;
-    const ResponsiveLayout = useMemo(() => WidthProvider(GL), []);
+    const ResponsiveLayout = useMemo(() => WidthProvider(Responsive), []);
     const windowsSize = useWindowSize();
-    console.log(windowsSize);
 
     const data = useMemo((): IData => {
         const defaultData: IData = { layout: [], children: [] };
@@ -30,10 +29,9 @@ const GridLayout = (props: IProps) => {
         }, defaultData);
     }, [items]);
 
-    const cols = 240;
-    const rows = 40;
-    const rowHeight = (windowsSize.height - 40) / rows;
-    console.log(rowHeight);
+    const cols = 10;
+    const rows = 10;
+    const rowHeight = (windowsSize.height - 150) / rows;
 
     return (
         <ResponsiveLayout
@@ -44,11 +42,12 @@ const GridLayout = (props: IProps) => {
                 console.log('res');
             }}
             maxRows={rows}
+            breakpoints={{ lg: 5000 }}
             rowHeight={rowHeight}
             resizeHandles={['n', 'e', 's', 'w', 'ne', 'se', 'nw', 'sw']}
             useCSSTransforms
-            cols={cols}
-            layout={data.layout}
+            cols={{ lg: cols }}
+            layouts={{ lg: data.layout }}
             className={classNames(className, styles.wrapper)}
             onDragStart={(s) => {
                 console.log(s);

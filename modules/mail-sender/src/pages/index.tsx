@@ -7,12 +7,12 @@ import { ConfigEditor, ServersUrls, Settings } from '@/widgets';
 import styles from './styles.module.scss';
 
 const Pages = () => {
-    const activeEditor = useStateCustom(false);
+    const activeEditor = useStateCustom(true);
 
     const widgets: IGridLayout.Items = [
-        { name: 'settings', grid: { w: 120, h: 1, x: 0, y: 0, static: !activeEditor.value } },
-        { name: 'servers_urls', grid: { w: 120, h: 1, x: 120, y: 0, static: !activeEditor.value } },
-        { name: 'config_editor', grid: { w: 240, h: 1, x: 0, y: 120, static: !activeEditor.value } },
+        { name: 'settings', grid: { w: 5, h: 5, x: 0, y: 0, static: !activeEditor.value } },
+        { name: 'servers_urls', grid: { w: 5, h: 5, x: 5, y: 0, static: !activeEditor.value } },
+        { name: 'config_editor', grid: { w: 10, h: 5, x: 0, y: 5, static: !activeEditor.value } },
     ];
 
     return (
