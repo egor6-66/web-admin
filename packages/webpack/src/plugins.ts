@@ -1,16 +1,17 @@
-// import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import Dotenv from 'dotenv-webpack';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 import webpack, { Configuration, DefinePlugin } from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import { WebpackManifestPlugin } from 'webpack-manifest-plugin';
 
 import { IBuildOptions } from './types';
 
-export function plugins({ mode, paths, analyzer, moduleFederations, devServer }: IBuildOptions): Configuration['plugins'] {
+export function plugins({ mode, paths, analyzer, moduleFederations, devServer, manifest }: IBuildOptions): Configuration['plugins'] {
     const isDev = mode === 'development';
     const isProd = mode === 'production';
 
@@ -27,6 +28,13 @@ export function plugins({ mode, paths, analyzer, moduleFederations, devServer }:
         new Dotenv({
             path: path.resolve(`.env.${mode}`),
         }),
+        new WebpackManifestPlugin({
+            fileName: 'manifest.json',
+            publicPath: paths.output,
+            generate: (seed, files, entries, chunkGraph) => {
+                return manifest;
+            },
+        }),
     ];
 
     if (moduleFederations && !devServer.active) {
@@ -39,8 +47,7 @@ export function plugins({ mode, paths, analyzer, moduleFederations, devServer }:
 
     if (isDev) {
         plugins.push(new webpack.ProgressPlugin());
-        /** Выносит проверку типов в отдельный процесс: не нагружая сборку */
-        // plugins.push(new ForkTsCheckerWebpackPlugin())
+        plugins.push(new ForkTsCheckerWebpackPlugin());
     }
 
     if (isProd) {

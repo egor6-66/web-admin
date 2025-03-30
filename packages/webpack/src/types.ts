@@ -47,6 +47,11 @@ export interface IDevServer {
     proxy?: Array<{ prefix: string; target: string; postfix4prefix?: string; ws?: boolean }>;
 }
 
+export interface IManifest extends Record<string, string> {
+    name: string;
+    displayName: string;
+}
+
 export interface IBuildOptions {
     paths: IBuildPaths;
     mode: BuildMode;
@@ -55,4 +60,5 @@ export interface IBuildOptions {
     devServer?: IDevServer;
     moduleFederations?: IModuleFederations;
     aliases: Record<string, string>;
+    manifest: IManifest;
 }

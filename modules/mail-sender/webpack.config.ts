@@ -9,6 +9,7 @@ export default (env: IEnvVariables) => {
         paths: {
             static: env.devServer ? '/' : '/mail_sender',
             ...defaultPaths(__dirname),
+            output: path.resolve(__dirname, '..', '..', 'remote', 'builds', `${packageJson.name}_${packageJson.version}`),
         },
 
         devServer: {
@@ -30,6 +31,10 @@ export default (env: IEnvVariables) => {
         aliases: {
             '@': path.resolve('src'),
             styleUtilities: path.resolve('src', 'shared', 'styles'),
+        },
+        manifest: {
+            name: packageJson.name,
+            displayName: 'MAIL SENDER',
         },
     });
 };
