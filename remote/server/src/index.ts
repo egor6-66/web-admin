@@ -23,7 +23,7 @@ function Bootstrap() {
                 if (builds.length && module !== 'host') {
                     const build = fs.readdirSync(path.join(pathToModulesDir, module))[0];
                     const manifest = fs.readFileSync(path.join(pathToModulesDir, module, build, 'manifest.json'), 'utf8');
-                    modules.push(JSON.parse(manifest));
+                    modules.push({ manifest: JSON.parse(manifest), builds });
                 }
             });
             res.send({ modules });
@@ -34,8 +34,9 @@ function Bootstrap() {
 
     app.get('/config', async (req: any, res: any) => {
         try {
-            const params = req.query;
-            res.send(getConfig(path.join(path.join(pathToConfigsDir), `${params.variant}.json`)));
+            const query = req.query;
+            const manifest = fs.readFileSync(path.join(pathToModulesDir, query.module_name, `build_${query.build}`, 'manifest.json'), 'utf8');
+            res.send(manifest);
         } catch (e) {
             console.log(e);
         }

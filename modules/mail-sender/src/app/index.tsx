@@ -1,5 +1,5 @@
 import Pages from '../pages';
-import { InitProvider, QueryProvider } from '../proveders';
+import { InitProvider, QueryProvider, RouterProvider } from '../proveders';
 
 const App = () => {
     return (
@@ -12,9 +12,11 @@ const App = () => {
 export const Standalone = () => {
     return (
         <InitProvider>
-            <QueryProvider>
-                <Pages />
-            </QueryProvider>
+            <RouterProvider>
+                <QueryProvider>
+                    <Pages />
+                </QueryProvider>
+            </RouterProvider>
         </InitProvider>
     );
 };

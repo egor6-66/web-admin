@@ -5,8 +5,6 @@ import { Variants } from './interfaces';
 const staleMin = 5;
 
 function useConfigs() {
-    console.log(window.location);
-
     const getConfig = (variant: Variants) => {
         return useQuery<any>({
             queryKey: ['reportsConfig'],
