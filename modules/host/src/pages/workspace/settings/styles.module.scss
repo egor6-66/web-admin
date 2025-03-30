@@ -3,15 +3,28 @@
 .wrapper {
   @include mixins.box-size(100%, 100%);
   @include mixins.flex-column;
-  position: relative;
+  padding: 12px;
+  gap: 12px;
 
-  .header {
-    @include mixins.box-size(100%, 30px);
+  .download {
+    @include mixins.box-size(100%, auto);
+    @include mixins.flex-column;
+    padding: 12px;
+    gap: 12px;
+    background-color: var(--bg-primary);
+    border-radius: 12px;
+
+    .controller{
+      @include mixins.box-size(100%, auto);
+      @include mixins.flex(flex-start, center);
+    }
   }
 
-  .module {
+  .allModules {
     @include mixins.box-size(100%, auto);
     @include mixins.flex(center, center);
+    background-color: var(--bg-primary);
+    border-radius: 12px;
     flex: 1;
   }
 }
