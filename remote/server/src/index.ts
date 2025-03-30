@@ -15,7 +15,7 @@ const manifestName = 'manifest.json';
 
 function Bootstrap() {
     const app = express();
-    const port = 5006;
+    const port = 9808;
     const router = express.Router();
     const pathToConfigsDir = path.resolve('..', 'configs');
     const pathToModulesDir = path.resolve('..', 'modules');

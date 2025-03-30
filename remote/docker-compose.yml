@@ -5,10 +5,11 @@ services:
       dockerfile: Dockerfile
       target: node
     ports:
-      - "5006:5006"
+      - "9808:9808"
     volumes:
       - ./modules:/modules
       - ./configs:/configs
+
   nginx:
     build:
       context: .
@@ -20,7 +21,8 @@ services:
     volumes:
       - ./modules:/modules
       - ./configs:/configs
-
+    depends_on:
+      - node_server
 volumes:
   modules: {}
   configs: {}
