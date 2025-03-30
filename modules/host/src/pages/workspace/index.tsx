@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { useModuleLoader, useRouting } from '@packages/hooks';
 import { AnimatePresence, INavigation, Navigation } from '@packages/ui';
 
-import { useConfigs } from '@/features';
+import { useConfigs, useModules } from '@/features';
 import { AppState } from '@/widgets';
 
 import styles from './styles.module.scss';
@@ -11,11 +11,11 @@ import styles from './styles.module.scss';
 const WorkspacePage = () => {
     const { location, navigateWithParam, getParams } = useRouting();
 
+    const { getAvailableModules } = useModules();
     const { getConfig } = useConfigs();
 
-    const { data: servicesConfig } = getConfig('services');
+    const { data: availableModules } = getAvailableModules();
 
-    const navItems: INavigation.Items = [{ name: 'mail_sender', displayName: 'MAIL SENDER' }];
     const params = getParams();
 
     const modulesDictionary: Record<string, any> = {
@@ -46,7 +46,7 @@ const WorkspacePage = () => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.navigations}>
-                <Navigation items={navItems} handleNavClick={(item) => navigateWithParam('', 'moduleName', item.name)} />
+                <Navigation items={availableModules?.modules} handleNavClick={(item) => navigateWithParam('', 'moduleName', item.name)} />
                 <AppState operatorName={'Egor'} />
             </div>
             <AnimatePresence visible={true} className={styles.content} animationKey={params.moduleName}>

@@ -10,20 +10,35 @@ const getConfig = (path: string) => {
 function Bootstrap() {
     const app = express();
     const port = 5006;
-    const pathToConfigsDir = path.join(__dirname, 'configs');
+    const pathToConfigsDir = path.resolve('..', 'configs');
+    const pathToModulesDir = path.resolve('..', 'modules');
     app.use(cors());
 
-    app.get('/test', async (req: any, res: any) => {
-        console.log('awd');
+    app.get('/available_modules', async (req: any, res: any) => {
+        try {
+            const modules: any = [];
+            fs.readdirSync(pathToModulesDir).forEach((module) => {
+                const builds = fs.readdirSync(path.join(pathToModulesDir, module));
 
-        res.send('wd');
-        //
-        // try {
-        //     const params = req.params;
-        //     res.send(getConfig(path.join(path.join(pathToConfigsDir, 'forms'), `${params.variant}.json`)));
-        // } catch (e) {
-        //     console.log(e);
-        // }
+                if (builds.length && module !== 'host') {
+                    const build = fs.readdirSync(path.join(pathToModulesDir, module))[0];
+                    const manifest = fs.readFileSync(path.join(pathToModulesDir, module, build, 'manifest.json'), 'utf8');
+                    modules.push(JSON.parse(manifest));
+                }
+            });
+            res.send({ modules });
+        } catch (e) {
+            console.log(e);
+        }
+    });
+
+    app.get('/config', async (req: any, res: any) => {
+        try {
+            const params = req.query;
+            res.send(getConfig(path.join(path.join(pathToConfigsDir), `${params.variant}.json`)));
+        } catch (e) {
+            console.log(e);
+        }
     });
 
     app.listen(port, () => {
