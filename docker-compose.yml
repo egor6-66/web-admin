@@ -1,8 +1,0 @@
-services:
-  nginx:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      target: prod
-    ports:
-      - "443:443"

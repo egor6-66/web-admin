@@ -2,9 +2,7 @@
   "name": "web_admin",
   "version": "1.0.0",
   "scripts": {
-    "demo-stand:dev": "ts-node ./scripts/demo-stand.ts --mode=dev",
-    "demo-stand:prod": "ts-node ./scripts/demo-stand.ts --mode=prod",
-    "docker": "docker compose -f docker-compose.yml  up --build -d"
+    "remote": "cd remote && docker compose -f docker-compose.yml  up --build -d"
   },
   "workspaces": [
     "modules/*",

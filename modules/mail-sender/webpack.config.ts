@@ -9,7 +9,7 @@ export default (env: IEnvVariables) => {
         paths: {
             static: env.devServer ? '/' : '/mail_sender',
             ...defaultPaths(__dirname),
-            output: path.resolve(__dirname, '..', '..', 'remote', 'builds', `${packageJson.name}_${packageJson.version}`),
+            output: path.resolve(__dirname, '..', '..', 'remote', 'modules', packageJson.name),
         },
 
         devServer: {

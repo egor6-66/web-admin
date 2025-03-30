@@ -2,7 +2,8 @@
   "name": "server",
   "version": "1.0.0",
   "scripts": {
-    "server": "nodemon ./src/index.ts",
+    "start:dev": "nodemon ./src/index.ts",
+    "start:prod": "ts-node ./src/index.ts",
     "typecheck": "tsc"
   },
   "dependencies": {
@@ -11,6 +12,8 @@
     "nodemon": "^3.1.9"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.17"
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "ts-node": "^10.9.2"
   }
 }

@@ -9,17 +9,21 @@ const getConfig = (path: string) => {
 
 function Bootstrap() {
     const app = express();
-    const port = 5000;
+    const port = 5006;
     const pathToConfigsDir = path.join(__dirname, 'configs');
     app.use(cors());
 
-    app.get('/config/:variant', async (req: any, res: any) => {
-        try {
-            const params = req.params;
-            res.send(getConfig(path.join(path.join(pathToConfigsDir, 'forms'), `${params.variant}.json`)));
-        } catch (e) {
-            console.log(e);
-        }
+    app.get('/test', async (req: any, res: any) => {
+        console.log('awd');
+
+        res.send('wd');
+        //
+        // try {
+        //     const params = req.params;
+        //     res.send(getConfig(path.join(path.join(pathToConfigsDir, 'forms'), `${params.variant}.json`)));
+        // } catch (e) {
+        //     console.log(e);
+        // }
     });
 
     app.listen(port, () => {

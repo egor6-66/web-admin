@@ -1,0 +1,26 @@
+services:
+  node_server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: node
+    ports:
+      - "5006:5006"
+    volumes:
+      - ./modules:/modules
+      - ./configs:/configs
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: nginx
+    ports:
+      - "443:443"
+    restart: always
+    volumes:
+      - ./modules:/modules
+      - ./configs:/configs
+
+volumes:
+  modules: {}
+  configs: {}

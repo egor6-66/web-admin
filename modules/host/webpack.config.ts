@@ -9,6 +9,7 @@ export default (env: IEnvVariables) => {
         paths: {
             static: '/',
             ...defaultPaths(__dirname),
+            output: path.resolve(__dirname, '..', '..', 'remote', 'modules', packageJson.name),
         },
         devServer: {
             active: env.devServer,
@@ -27,6 +28,10 @@ export default (env: IEnvVariables) => {
         aliases: {
             '@': path.resolve('src'),
             styleUtilities: path.resolve('src', 'shared', 'styles'),
+        },
+        manifest: {
+            name: packageJson.name,
+            displayName: 'HOST',
         },
     });
 };

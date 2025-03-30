@@ -20,7 +20,7 @@ const WorkspacePage = () => {
 
     const modulesDictionary: Record<string, any> = {
         mail_sender: {
-            url: 'https://localhost/mail_sender/remoteEntry.js',
+            url: `${window.location.hostname}/mail_sender/remoteEntry.js`,
             scope: 'mail_sender',
             module: './MailSender',
         },
