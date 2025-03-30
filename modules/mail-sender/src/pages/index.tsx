@@ -25,7 +25,7 @@ const Pages = () => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.header}>
-                <div onClick={activeEditor.toggle}>editor new</div>
+                <div onClick={activeEditor.toggle}>editor super new</div>
             </div>
             <GridLayout items={widgets} className={styles.grid}>
                 {(item) => {

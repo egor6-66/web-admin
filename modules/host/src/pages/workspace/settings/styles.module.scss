@@ -1,0 +1,17 @@
+@use '@packages/styles/src/mixins';
+
+.wrapper {
+  @include mixins.box-size(100%, 100%);
+  @include mixins.flex-column;
+  position: relative;
+
+  .header {
+    @include mixins.box-size(100%, 30px);
+  }
+
+  .module {
+    @include mixins.box-size(100%, auto);
+    @include mixins.flex(center, center);
+    flex: 1;
+  }
+}

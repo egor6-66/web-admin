@@ -7,6 +7,7 @@ import { useConfigs, useModules } from '@/features';
 import { AppState } from '@/widgets';
 
 import ModulePage from './module';
+import SettingsPage from './settings';
 
 import styles from './styles.module.scss';
 
@@ -23,21 +24,21 @@ const WorkspacePage = () => {
         //     navigateWithParam('', 'moduleName', 'mail_sender');
         // }
     }, []);
-    console.log(availableModules?.modules);
+    console.log(availableModules);
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.navigations}>
                 <Navigation
-                    items={availableModules?.modules.map((i: any) => i.manifest)}
-                    handleNavClick={(item) => navigateWithParam('', 'moduleName', item.name)}
+                    items={availableModules?.modules.map((i: any) => ({ ...i.manifest, builds: i.builds }))}
+                    handleNavClick={(item: any) => navigateWithParam('', 'moduleName', item.name)}
                 />
                 <AppState operatorName={'Egor'} />
             </div>
             <AnimatePresence visible={true} className={styles.content} animationKey={params.moduleName}>
                 <Routes location={location} key={params.moduleName}>
                     {availableModules?.modules.map((module: any) => (
-                        <Route key={module.manifest.name} path={`moduleName/:${module.manifest.name}`} element={<ModulePage {...module} />} />
+                        <Route key={module.manifest.name} path={`moduleName/:${module.manifest.name}`} element={<ModulePage />} />
                     ))}
                 </Routes>
             </AnimatePresence>

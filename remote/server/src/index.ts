@@ -11,6 +11,8 @@ const getConfig = (path: string) => {
     return JSON.parse(fs.readFileSync(path, 'utf-8'));
 };
 
+const manifestName = 'manifest.json';
+
 function Bootstrap() {
     const app = express();
     const port = 5006;
@@ -25,13 +27,25 @@ function Bootstrap() {
             fs.readdirSync(pathToModulesDir).forEach((module) => {
                 const builds = fs.readdirSync(path.join(pathToModulesDir, module));
 
-                if (builds.length && module !== 'host') {
+                if (builds.length) {
                     const build = fs.readdirSync(path.join(pathToModulesDir, module))[0];
-                    const manifest = fs.readFileSync(path.join(pathToModulesDir, module, build, 'manifest.json'), 'utf8');
-                    modules.push({ manifest: JSON.parse(manifest), builds });
+                    const manifest = fs.readFileSync(path.join(pathToModulesDir, module, build, manifestName), 'utf8');
+                    modules.push({ manifest: { ...JSON.parse(manifest) } });
                 }
             });
             res.send({ modules });
+        } catch (e) {
+            res.status(500).end(e.message);
+        }
+    });
+
+    app.get('/module', async (req: any, res: any) => {
+        try {
+            const { name } = req.query;
+            const builds = fs.readdirSync(path.join(pathToModulesDir, name));
+            const build = fs.readdirSync(path.join(pathToModulesDir, name))[0];
+            const manifest = fs.readFileSync(path.join(pathToModulesDir, name, build, manifestName), 'utf8');
+            res.send({ manifest: JSON.parse(manifest), builds });
         } catch (e) {
             res.status(500).end(e.message);
         }

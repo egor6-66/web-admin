@@ -11,7 +11,7 @@ import { WebpackManifestPlugin } from 'webpack-manifest-plugin';
 
 import { IBuildOptions } from './types';
 
-export function plugins({ mode, paths, analyzer, moduleFederations, devServer, manifest }: IBuildOptions): Configuration['plugins'] {
+export function plugins({ mode, paths, analyzer, moduleFederations, devServer, manifest, version }: IBuildOptions): Configuration['plugins'] {
     const isDev = mode === 'development';
     const isProd = mode === 'production';
 
@@ -20,6 +20,7 @@ export function plugins({ mode, paths, analyzer, moduleFederations, devServer, m
             template: paths.html,
             // favicon: path.resolve(paths.public, 'favicon.ico'),
             publicPath: paths.static,
+            excludeChunks: [manifest.name],
         }),
 
         new DefinePlugin({
