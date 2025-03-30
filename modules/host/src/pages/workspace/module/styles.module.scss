@@ -5,22 +5,13 @@
   @include mixins.flex-column;
   position: relative;
 
-  .appState {
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: 10;
+  .header {
+    @include mixins.box-size(100%, 30px);
   }
 
-  .navigations {
+  .module {
     @include mixins.box-size(100%, auto);
-    @include mixins.flex(space-between);
-    border-bottom: 1px solid var(--border-area);
-    padding: 4px 12px 0 12px;
-  }
-
-  .content {
     @include mixins.flex(center, center);
-    @include mixins.box-size(100%, 100%);
+    flex: 1;
   }
 }

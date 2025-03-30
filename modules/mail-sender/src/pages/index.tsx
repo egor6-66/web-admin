@@ -11,7 +11,6 @@ const Pages = () => {
     const activeEditor = useStateCustom(true);
     const { getParams } = useRouting();
     const params = getParams();
-    console.log(params);
 
     const { getConfig, getBuilds } = useConfig();
     const { data } = getBuilds(params.moduleName);
@@ -26,7 +25,7 @@ const Pages = () => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.header}>
-                <div onClick={activeEditor.toggle}>DKWdw</div>
+                <div onClick={activeEditor.toggle}>editor new</div>
             </div>
             <GridLayout items={widgets} className={styles.grid}>
                 {(item) => {

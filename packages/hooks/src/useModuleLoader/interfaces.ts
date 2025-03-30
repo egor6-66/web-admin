@@ -6,8 +6,9 @@ export interface IMicroservice {
     url: string;
     scope: string;
     module: string;
-    errorComponent: ReactNode;
-    loadingComponent: ReactNode;
+    version: string;
+    errorComponent?: ReactNode;
+    loadingComponent?: ReactNode;
     onError?: () => void;
     disabled?: boolean;
 }

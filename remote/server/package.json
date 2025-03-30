@@ -7,13 +7,19 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "bluebird": "^3.7.2",
     "cors": "^2.8.5",
     "express": "^4.21.2",
-    "nodemon": "^3.1.9"
+    "multiparty": "^4.2.3",
+    "nodemon": "^3.1.9",
+    "unzipper": "^0.12.3"
   },
   "devDependencies": {
+    "@types/bluebird": "^3.5.42",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
+    "@types/multiparty": "^4.2.1",
+    "@types/unzipper": "^0.10.11",
     "ts-node": "^10.9.2"
   }
 }
