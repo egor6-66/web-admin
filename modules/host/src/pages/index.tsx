@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { useRouting } from '@packages/hooks';
 import { AnimatePresence, Button } from '@packages/ui';
-import { io } from 'socket.io-client';
+
+import { useWS } from '@/features';
 
 import AuthPage from './auth';
 import WorkspacePage from './workspace';
@@ -10,34 +11,23 @@ import WorkspacePage from './workspace';
 import styles from './styles.module.scss';
 const url = window.location.hostname;
 
-const socket = io(url, {
-    reconnection: true,
-    path: '/my-custom-path',
-    transports: ['polling', 'websocket'],
-    // withCredentials: false,
-});
-
 const Pages = () => {
     const { getSegment, location } = useRouting();
     const animationKey = getSegment(1);
     const [messages, setMessages] = useState('');
+    const ws = useWS();
 
     useEffect(() => {
-        let storedUserId = sessionStorage.getItem('userId');
+        const listener = ws.listener('receiveMessage', (message) => {
+            console.log(message);
 
-        if (!storedUserId) {
-            storedUserId = Math.random().toString(36).substring(7);
-            sessionStorage.setItem('userId', storedUserId);
-        }
-
-        socket.on('receiveMessage', (message) => {
             if (!localStorage.getItem('notOff')) {
                 setMessages(message);
             }
         });
 
         return () => {
-            socket.off('receiveMessage');
+            listener();
         };
     }, []);
 

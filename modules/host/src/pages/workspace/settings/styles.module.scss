@@ -12,48 +12,4 @@
       background-color: var(--bg-primary);
     }
   }
-
-  .download {
-    @include mixins.box-size(100%, auto);
-    @include mixins.flex-column;
-    padding: 12px;
-    gap: 12px;
-    background-color: var(--bg-primary);
-    border-radius: 12px;
-
-    .controller {
-      @include mixins.box-size(100%, auto);
-      @include mixins.flex(flex-start, center);
-    }
-  }
-
-  .allModules {
-    @include mixins.box-size(100%, auto);
-    @include mixins.flex-column;
-    padding: 12px;
-    background-color: var(--bg-primary);
-    border-radius: 12px;
-    flex: 1;
-    gap: 20px;
-
-    .item {
-      @include mixins.box-size(100%, auto);
-      @include mixins.flex-column;
-      border-bottom: 1px solid var(--border-area);
-      gap: 12px;
-
-      .builds {
-
-        .item {
-          @include mixins.flex;
-          @include mixins.box-size(100%, auto);
-          gap: 12px;
-          border-bottom: 1px solid var(--border-area);
-          .delete{
-            cursor: pointer;
-          }
-        }
-      }
-    }
-  }
 }

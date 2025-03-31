@@ -1,5 +1,6 @@
 import express from 'express';
 import fs from 'fs';
+import cmd from 'node-cmd';
 import path from 'path';
 
 import * as WS from '../ws';
@@ -36,6 +37,21 @@ function module(ws: WS.IWS) {
             const build = fs.readdirSync(path.join(pathToModulesDir, name))[0];
             const manifest = fs.readFileSync(path.join(pathToModulesDir, name, build, manifestName), 'utf8');
             res.send({ manifest: JSON.parse(manifest), builds });
+        } catch (e) {
+            res.status(500).end(e.message);
+        }
+    });
+
+    router.post('/command', async (req: any, res: any) => {
+        const body = req.body;
+
+        try {
+            cmd.run(req.body.command, function (err, data, stderr) {
+                clients.forEach((i) => {
+                    io.to(i).emit('receiveMessage', data);
+                });
+                console.log('examples dir now contains the example file along with : ', data, err, stderr);
+            });
         } catch (e) {
             res.status(500).end(e.message);
         }

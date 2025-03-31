@@ -1,3 +1,4 @@
+import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
 
@@ -9,6 +10,7 @@ function Bootstrap() {
     const port = 9808;
 
     app.use(cors());
+    app.use(bodyParser());
 
     const server = app.listen(port, () => {
         console.log(`Example app listening on port ${port}`);

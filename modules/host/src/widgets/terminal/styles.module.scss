@@ -1,0 +1,11 @@
+@use '@packages/styles/src/mixins';
+
+.wrapper {
+  @include mixins.flex(center, center);
+  gap: 8px;
+
+  .textarea {
+    background-color: var(--bg-primary);
+    border-radius: 12pxs;
+  }
+}
