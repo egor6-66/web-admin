@@ -1,11 +1,15 @@
 @use '@packages/styles/src/mixins';
 
 .wrapper {
-  @include mixins.flex(center, center);
-  gap: 8px;
+  @include mixins.box-size(100%, 100%);
+  @include mixins.flex-column;
+  padding: 12px;
+  gap: 12px;
+  background-color: var(--bg-primary);
+  border-radius: 12px;
 
   .textarea {
-    background-color: var(--bg-primary);
+    background-color: var(--bg-substrate);
     border-radius: 12pxs;
   }
 }

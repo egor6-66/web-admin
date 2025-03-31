@@ -15,6 +15,7 @@ const Terminal = (props: IProps) => {
 
     return (
         <div className={styles.wrapper}>
+            <div>ТЕРМИНАЛ</div>
             <textarea
                 onKeyPress={(e) => {
                     e.code === 'Enter' && mutateCommand(command.value);

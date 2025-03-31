@@ -1,7 +1,7 @@
 @use '@packages/styles/src/mixins';
 
 .wrapper {
-  @include mixins.box-size(100%, auto);
+  @include mixins.box-size(100%, 100%);
   @include mixins.flex-column;
   padding: 12px;
   gap: 12px;
