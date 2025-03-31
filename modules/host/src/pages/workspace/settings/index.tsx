@@ -7,9 +7,9 @@ import styles from './styles.module.scss';
 
 const SettingsPage = () => {
     const widgets: IGridLayout.Items = [
-        { name: 'terminal', grid: { w: 5, h: 5, x: 0, y: 0 } },
-        { name: 'download', grid: { w: 5, h: 5, x: 5, y: 0 } },
-        { name: 'directories', grid: { w: 10, h: 5, x: 0, y: 5 } },
+        { name: 'terminal', grid: { w: 5, h: 5, x: 0, y: 0, static: true } },
+        { name: 'download', grid: { w: 5, h: 5, x: 5, y: 0, static: true } },
+        { name: 'directories', grid: { w: 10, h: 5, x: 0, y: 5, static: true } },
     ];
 
     return (

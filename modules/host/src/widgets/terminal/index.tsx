@@ -6,17 +6,20 @@ import { useTerminal, useWS } from '@/features';
 
 import styles from './styles.module.scss';
 
-const defaultMessages = [{ text: `connect to ${window.location.origin}` }];
+const defaultHost = window.location.origin;
 
 const Terminal = () => {
-    const { sendCommand } = useTerminal();
-    const messages = useStateCustom(defaultMessages);
+    const { sendCommand, connect } = useTerminal();
+    const messages = useStateCustom([]);
 
     const { mutate: mutateCommand } = sendCommand();
-    const hostInput = Input.use({});
+    const hostInput = Input.use({ initValue: defaultHost });
     const commandInput = Input.use({});
     const disabledInput = useStateCustom(false);
     const ws = useWS();
+    const connectState = useStateCustom<'try' | 'connected' | 'disconnect' | 'error'>('disconnect');
+
+    const { mutate: mutateConnect } = connect();
 
     const handleKeyPress = (e: any) => {
         if (e.code === 'Enter') {
@@ -32,7 +35,6 @@ const Terminal = () => {
 
     useEffect(() => {
         const listener = ws.listener('terminal', (message) => {
-            console.log(messages);
             messages.set((prev) => [...prev, { text: message }]);
         });
 
@@ -41,21 +43,43 @@ const Terminal = () => {
         };
     }, []);
 
+    const handleConnect = () => {
+        if (connectState.value === 'disconnect') {
+            connectState.set('try');
+            mutateConnect(hostInput.value, {
+                onSuccess: (e) => {
+                    connectState.set('connected');
+                    console.log(e);
+                    messages.set((prev) => [...prev, e]);
+                    commandInput.focus();
+                },
+            });
+        }
+    };
+
+    console.log(messages);
+
     return (
         <div className={styles.wrapper}>
             <div>ТЕРМИНАЛ</div>
             <div className={styles.host}>
                 <Input inputAttrs={hostInput.inputAttrs} displayName={'Host'} />
 
-                <Button disabled={!hostInput.value} style={{ width: 190 }}>
-                    подключиться
+                <Button disabled={!hostInput.value || connectState.value === 'try'} style={{ width: 190 }} onClick={handleConnect}>
+                    {connectState.value === 'connected' ? 'отключиться' : 'подключиться'}
                 </Button>
             </div>
-            <div className={styles.terminal}>
+            <div className={styles.terminal} onClick={commandInput.focus}>
                 {messages.value.map((i, index) => (
-                    <div key={index}>{i.text}</div>
+                    <div key={index}>{i}</div>
                 ))}
-                <input onKeyPress={handleKeyPress} autoFocus {...commandInput.inputAttrs} />
+                <input
+                    ref={commandInput.ref}
+                    disabled={connectState.value !== 'connected'}
+                    onKeyPress={handleKeyPress}
+                    autoFocus
+                    {...commandInput.inputAttrs}
+                />
             </div>
         </div>
     );

@@ -5,9 +5,9 @@ import { string, StringSchema } from 'yup';
 import { IUseProps } from './interfaces';
 
 function use(props: IUseProps) {
-    const { debounceDelay, debounce, cut, inputAttrs, name, ...moreProps } = props;
+    const { debounceDelay, initValue, debounce, cut, inputAttrs, name, ...moreProps } = props;
     const inputRef = useRef<HTMLInputElement>(null);
-    const [state, setState] = useState('');
+    const [state, setState] = useState(initValue);
     const [errorMessage, setErrorMessage] = useState('');
 
     const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
@@ -34,7 +34,9 @@ function use(props: IUseProps) {
     );
 
     const focus = () => {
-        console.log(inputRef);
+        if (inputRef) {
+            inputRef.current.focus();
+        }
     };
 
     const checkValid = async (cb: (value: string, yap: { string: () => StringSchema }) => Promise<any>) => {

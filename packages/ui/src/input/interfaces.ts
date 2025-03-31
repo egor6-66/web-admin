@@ -3,6 +3,7 @@ import { CSSProperties, InputHTMLAttributes, RefObject } from 'react';
 export interface IProps extends InputHTMLAttributes<HTMLInputElement> {
     name?: string;
     displayName?: string;
+    initValue?: string;
     isLoading?: boolean;
     errorMessage?: string;
     wrapperStyle?: CSSProperties;

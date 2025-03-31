@@ -1,6 +1,8 @@
+import axios from 'axios';
 import express from 'express';
 import fs from 'fs';
 import cmd from 'node-cmd';
+import os from 'os';
 import path from 'path';
 
 import * as WS from '../ws';
@@ -37,6 +39,21 @@ function module(ws: WS.IWS) {
             const build = fs.readdirSync(path.join(pathToModulesDir, name))[0];
             const manifest = fs.readFileSync(path.join(pathToModulesDir, name, build, manifestName), 'utf8');
             res.send({ manifest: JSON.parse(manifest), builds });
+        } catch (e) {
+            res.status(500).end(e.message);
+        }
+    });
+
+    router.post('/connect', async (req: any, res: any) => {
+        const body = req.body;
+        console.log(os.hostname());
+
+        try {
+            if (body.host === os.hostname()) {
+                res.status(200).send(`successful connection🎉 \nhost: ${body.host}\nos: ${os.type()}\narch: ${os.arch()}`);
+            } else {
+                console.log(body.host);
+            }
         } catch (e) {
             res.status(500).end(e.message);
         }
