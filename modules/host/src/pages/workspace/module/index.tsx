@@ -8,52 +8,58 @@ import SettingsPage from '@/pages/workspace/settings';
 import { AppState } from '@/widgets';
 
 import styles from './styles.module.scss';
+const url = window.location.hostname;
 
 const ModulePage = (props: any) => {
     const { location, navigateWithParam, getParams } = useRouting();
-    const { moduleName } = getParams();
-
+    const { module } = getParams();
     const { getModule } = useModules();
-    const { data: moduleData } = getModule(moduleName);
-
-    const isHost = moduleName === 'host';
+    const { data: moduleData } = getModule(module);
+    const isHost = module === 'host';
+    console.log(url);
 
     const targetVersion = useStateCustom('', {
         storage: {
-            key: `${moduleName}_version`,
+            key: `${module}_version`,
         },
     });
 
-    console.log(targetVersion.value);
     useEffect(() => {
-        !targetVersion.value && targetVersion.set(moduleData?.builds[0]);
+        if (!targetVersion.value && moduleData) {
+            targetVersion.set(moduleData?.builds[0]);
+        }
     }, [moduleData]);
 
     const { Module } = useModuleLoader({
-        url: `https://localhost/modules/${moduleName}/${targetVersion.value}/remoteEntry.js`,
-        scope: moduleName,
+        url: `https://${url}/modules/${module}/${targetVersion.value}/remoteEntry.js`,
+        scope: module,
         version: targetVersion.value,
-        module: `./${moduleName
+        module: `./${module
             .split('_')
             .map((i: string) => i.charAt(0).toUpperCase() + String(i).slice(1))
             .join('')}`,
-        disabled: isHost,
+        disabled: isHost || !targetVersion.value,
     });
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.header}>
-                <select
-                    onChange={(e) => {
-                        targetVersion.set(e.target.value);
-                    }}
-                >
-                    {moduleData?.builds.map((i: any) => (
-                        <option key={i}>{i}</option>
-                    ))}
-                </select>
+                СБОРКИ:
+                {moduleData?.builds?.length
+                    ? moduleData?.builds.map((i: any) => (
+                          <div
+                              key={i}
+                              className={`${i === targetVersion.value ? styles.versions : ''}`}
+                              onClick={() => {
+                                  targetVersion.set(i);
+                                  window.location.reload();
+                              }}
+                          >
+                              {i}
+                          </div>
+                      ))
+                    : null}
             </div>
-            {/*<Module />*/}
             <div className={styles.module}>{isHost ? <SettingsPage /> : <Module />}</div>
         </div>
     );

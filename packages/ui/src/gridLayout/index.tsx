@@ -31,7 +31,7 @@ const GridLayout = (props: IProps) => {
 
     const cols = 10;
     const rows = 10;
-    const rowHeight = (windowsSize.height - 150) / rows;
+    const rowHeight = (windowsSize.height - 250) / rows;
 
     return (
         <ResponsiveLayout

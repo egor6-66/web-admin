@@ -12,7 +12,7 @@ function useRouting() {
 
     const getParams = (): Record<Params, string> => {
         const params: Record<Params, string> = {
-            moduleName: '',
+            module: '',
         };
 
         const pathArr = location.pathname.split('/') as Array<Params>;

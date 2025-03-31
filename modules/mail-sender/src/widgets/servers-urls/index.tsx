@@ -17,13 +17,7 @@ const ServersUrls = () => {
 
     return (
         <div className={styles.wrapper}>
-            <div>ServersUrls</div>
-            <div className={styles.inputs}>
-                <Input {...loginInput} />
-                <Input {...passInput} />
-            </div>
-
-            <Button onClick={handleLogin}>login</Button>
+            <div>SERVICES URLS</div>
         </div>
     );
 };

@@ -19,12 +19,8 @@ function useModules() {
     };
 
     const downloadModule = () => {
-        return useMutation<any>({
-            mutationFn: async (data: any) => {
-                for (const [name, value] of data) {
-                    console.log(value);
-                }
-
+        return useMutation({
+            mutationFn: async (data: { file: FormData; msg: string }) => {
                 await axios.post(`https://${url}/api/build`, data);
 
                 return {};
@@ -49,7 +45,19 @@ function useModules() {
         });
     };
 
-    return { getAvailableModules, downloadModule, getModule };
+    const deleteBuild = () => {
+        return useMutation({
+            mutationFn: async (data: { name: string; version: string; msg: string }) => {
+                await axios.delete(`https://${url}/api/build`, {
+                    params: data,
+                });
+
+                return {};
+            },
+        });
+    };
+
+    return { getAvailableModules, downloadModule, getModule, deleteBuild };
 }
 
 export default useModules;

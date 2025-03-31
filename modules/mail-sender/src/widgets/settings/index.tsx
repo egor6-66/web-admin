@@ -17,13 +17,7 @@ const Settings = () => {
 
     return (
         <div className={styles.wrapper}>
-            <div>Settings</div>
-            <div className={styles.inputs}>
-                <Input {...loginInput} />
-                <Input {...passInput} />
-            </div>
-
-            <Button onClick={handleLogin}>login</Button>
+            <div>SETTINGS</div>
         </div>
     );
 };

@@ -18,12 +18,6 @@ const ConfigEditor = () => {
     return (
         <div className={styles.wrapper}>
             <div>CONFIG EDITOR</div>
-            <div className={styles.inputs}>
-                <Input {...loginInput} />
-                <Input {...passInput} />
-            </div>
-
-            <Button onClick={handleLogin}>login</Button>
         </div>
     );
 };

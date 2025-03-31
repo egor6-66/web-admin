@@ -1,1 +1,1 @@
-export type Params = 'moduleName';
+export type Params = 'module';
