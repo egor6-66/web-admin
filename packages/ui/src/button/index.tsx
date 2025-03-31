@@ -8,10 +8,11 @@ import { IProps } from './interfaces';
 import styles from './styles.module.scss';
 
 const Button = forwardRef((props: PropsWithChildren<IProps>, ref) => {
-    const { iconName, children, isLoading, ...attrs } = props;
+    const { iconName, children, isLoading, disabled, ...attrs } = props;
 
     const wrapperClasses = classNames({
         [styles.wrapper]: true,
+        [styles.disabled]: disabled,
     });
 
     return (

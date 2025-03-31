@@ -48,10 +48,10 @@ function module(ws: WS.IWS) {
         try {
             cmd.run(req.body.command, function (err, data, stderr) {
                 clients.forEach((i) => {
-                    io.to(i).emit('receiveMessage', data);
+                    io.to(i).emit('terminal', data);
                 });
-                console.log('examples dir now contains the example file along with : ', data, err, stderr);
             });
+            res.status(200).send();
         } catch (e) {
             res.status(500).end(e.message);
         }

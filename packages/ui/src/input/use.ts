@@ -1,4 +1,4 @@
-import { ChangeEvent, InputHTMLAttributes, useCallback, useState } from 'react';
+import { ChangeEvent, InputHTMLAttributes, useCallback, useRef, useState } from 'react';
 import { useDebounce } from '@packages/hooks';
 import { string, StringSchema } from 'yup';
 
@@ -6,7 +6,7 @@ import { IUseProps } from './interfaces';
 
 function use(props: IUseProps) {
     const { debounceDelay, debounce, cut, inputAttrs, name, ...moreProps } = props;
-
+    const inputRef = useRef<HTMLInputElement>(null);
     const [state, setState] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
@@ -33,6 +33,10 @@ function use(props: IUseProps) {
         [state]
     );
 
+    const focus = () => {
+        console.log(inputRef);
+    };
+
     const checkValid = async (cb: (value: string, yap: { string: () => StringSchema }) => Promise<any>) => {
         return new Promise((resolve, reject) => {
             cb(state, { string })
@@ -50,9 +54,12 @@ function use(props: IUseProps) {
         ...moreProps,
         checkValid,
         value: state,
+        setValue: setState,
         errorMessage,
         isError: !!errorMessage,
         setError,
+        ref: inputRef,
+        focus,
         inputAttrs: {
             value: state,
             onChange,

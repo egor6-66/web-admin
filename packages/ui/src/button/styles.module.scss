@@ -9,4 +9,10 @@
   border-radius: 4px;
   color: white;
   font-size: 18px;
+  transition: background-color 0.2s;
+}
+
+.disabled{
+  pointer-events: none;
+  background-color: var(--text-disable);
 }

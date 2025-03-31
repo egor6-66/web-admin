@@ -9,7 +9,7 @@ function useTerminal() {
     const sendCommand = () => {
         return useMutation({
             mutationFn: async (command: string) => {
-                await axios.post(`https://${url}/api/command`, command);
+                await axios.post(`https://${url}/api/command`, { command });
 
                 return {};
             },

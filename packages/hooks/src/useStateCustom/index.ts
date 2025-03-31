@@ -24,7 +24,7 @@ function useStateCustom<T>(defaultValue: T, options?: IOptions) {
     const set = (value: T | ((value: T) => T)) => {
         if (typeof value === 'function') {
             // @ts-ignore
-            setState(value(state));
+            setState((prev) => value(prev));
         } else {
             setState(value);
         }

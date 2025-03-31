@@ -1,4 +1,4 @@
-import { CSSProperties, InputHTMLAttributes } from 'react';
+import { CSSProperties, InputHTMLAttributes, RefObject } from 'react';
 
 export interface IProps extends InputHTMLAttributes<HTMLInputElement> {
     name?: string;
@@ -12,6 +12,7 @@ export interface IProps extends InputHTMLAttributes<HTMLInputElement> {
     cut?: RegExp;
     debounceDelay?: number;
     debounce?: (value: string) => void;
+    inputRef?: RefObject<HTMLInputElement>;
 }
 
 export interface IUseProps extends Partial<IProps> {

@@ -8,8 +8,22 @@
   background-color: var(--bg-primary);
   border-radius: 12px;
 
-  .textarea {
+  .host {
+    @include mixins.box-size(100%, auto);
+    @include mixins.flex(flex-start, center);
+    gap: 12px;
+  }
+
+  .terminal {
+    @include mixins.flex-column;
+    @include mixins.box-size(100%, 100%);
+    gap: 6px;
+    padding: 12px;
     background-color: var(--bg-substrate);
-    border-radius: 12pxs;
+    border-radius: 12px;
+    white-space: pre-wrap;
+    .input{
+      border-left: 1px solid var(--text-primary);
+    }
   }
 }

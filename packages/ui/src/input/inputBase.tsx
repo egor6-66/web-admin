@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import classNames from 'classnames';
 
 import AnimatePresence from '../animatePresence';
@@ -8,7 +8,7 @@ import { IProps } from './interfaces';
 
 import styles from './styles.module.scss';
 
-const InputBase = (props: IProps) => {
+const InputBase = forwardRef((props: IProps, ref: any) => {
     const { id, required, isLoading, nameStyle, wrapperStyle, inputStyle, displayName, disabled, inputAttrs, errorMessage } = props;
 
     const wrapperClasses = classNames({
@@ -30,10 +30,10 @@ const InputBase = (props: IProps) => {
                 <AnimatePresence visible={!!errorMessage} className={styles.errorMessage}>
                     {errorMessage}
                 </AnimatePresence>
-                <input className={styles.input} style={inputStyle} {...inputAttrs} />
+                <input ref={ref} className={styles.input} style={inputStyle} {...inputAttrs} />
             </div>
         </div>
     );
-};
+});
 
 export default InputBase;
