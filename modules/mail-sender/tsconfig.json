@@ -6,10 +6,8 @@
     "paths": {
       "@/*": [
         "./src/*"
-      ],
-      "styleUtilities/*": [
-        "./src/shared/styles/*"
       ]
-    },
+    }
   },
+  "include": ["../../declaration.d.ts", "src/*"]
 }

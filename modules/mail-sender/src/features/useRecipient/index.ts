@@ -1,9 +1,8 @@
-import { useApi } from '@packages/hooks';
-import { useMutation } from '@tanstack/react-query';
-import { useQuery } from '@tanstack/react-query/build/modern/index';
+import { api } from '@packages/utils';
+import { useMutation, useQuery } from '@tanstack/react-query';
 
 function useRecipient() {
-    const { externalApi } = useApi();
+    const { externalApi } = api;
 
     const add = () => {
         return useMutation({

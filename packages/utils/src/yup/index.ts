@@ -12,12 +12,16 @@ interface IString extends StringSchema<string, any, undefined, ''> {
     ipv4: (msg?: string) => IString;
 }
 
-function useYup(): {
+interface IYup {
     string: () => IString;
     number: any;
     object: any;
-} {
-    return { string, number, object } as any;
 }
 
-export default useYup;
+const yup = {
+    string,
+    number,
+    object,
+} as IYup;
+
+export default yup;

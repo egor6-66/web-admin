@@ -1,0 +1,8 @@
+{
+  "name": "@packages/utils",
+  "version": "1.0.0",
+  "main": "./src/index.ts",
+  "dependencies": {
+    "yup": "^1.6.1"
+  }
+}

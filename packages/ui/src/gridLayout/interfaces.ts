@@ -10,7 +10,7 @@ export interface IStore {
 
 export interface IProps {
     layoutName?: string;
-    items?: Items;
+    items: Items;
     layoutProps?: ReactGridLayoutProps;
     children?: (item: IItem, index: number) => ReactNode;
     className?: string;
@@ -19,5 +19,9 @@ export interface IProps {
 export interface IData {
     layout: Array<Layout>;
     children: Array<ReactNode>;
+}
+
+export interface IControlsProps {
+    check?: boolean;
 }
 export type Items = Array<Layout>;

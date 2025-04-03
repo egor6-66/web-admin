@@ -1,23 +1,13 @@
-import React, { useRef } from 'react';
-import { useStateCustom, useYup } from '@packages/hooks';
+import React from 'react';
+import { useStateCustom } from '@packages/hooks';
 import { AnimatePresence, Button, Input } from '@packages/ui';
 
 import styles from './styles.module.scss';
 
 const AddConfig = () => {
     const error = useStateCustom('');
-    const yup = useYup();
 
-    const configSchema = useRef(
-        yup.object({
-            password: yup.string().required(),
-            username: yup.string().required(),
-            port: yup.number().required().positive().integer(),
-            host: yup.string().ipv4().required(),
-        })
-    );
-
-    const config = useStateCustom(configSchema.current.getDefault());
+    const config = useStateCustom([]);
 
     const handleChangeConfig = (key: string, value: string) => {
         config.set((prev: any) => ({ ...prev, [key]: value }));
@@ -25,7 +15,7 @@ const AddConfig = () => {
 
     const sendConfig = async () => {
         try {
-            await configSchema.current.validate(config.value);
+            // await configSchema.current.validate(config.value);
             alert(JSON.stringify(config.value, null, 2));
         } catch (e) {
             error.set(e.message);

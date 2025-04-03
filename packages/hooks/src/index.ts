@@ -1,5 +1,4 @@
 import useAccount from './useAccount';
-import useApi from './useApi';
 import useClickAway from './useClickAway';
 import useDebounce from './useDebounce';
 import useEffectOnce from './useEffectOnce';
@@ -14,11 +13,9 @@ import useThemes from './useThemes';
 import useTimeoutFn from './useTimeoutFn';
 import useWindowSize from './useWindowSize';
 import useWS from './useWS';
-import useYup, * as IUseYup from './useYup';
 
 export {
     useAccount,
-    useApi,
     useClickAway,
     useDebounce,
     useEffectOnce,
@@ -33,6 +30,4 @@ export {
     useTimeoutFn,
     useWindowSize,
     useWS,
-    useYup,
 };
-export type { IUseYup };

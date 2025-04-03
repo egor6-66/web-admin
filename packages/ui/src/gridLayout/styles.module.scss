@@ -1,13 +1,31 @@
 @use '@packages/styles/src/mixins';
 
 .wrapper {
-  //@include mixins.box-size(100%, 100%);
+
   .item{
-    //@include mixins.box-size(100%, 100%);
-    //background-color: #0D4CD3;
-    .react-resizable-handle{
-      background-color: red!important;
-    }
   }
 }
 
+.layoutController{
+  @include mixins.box-size(100%, auto);
+  @include mixins.flex(flex-end, center);
+  padding-top: 12px;
+  padding-right: 12px;
+  gap: 12px;
+
+  .toggleLayoutRedactor {
+    @include mixins.box-min-size(30px, 30px);
+    @include mixins.flex(center, center);
+    cursor: pointer;
+    transition: box-shadow 0.25s;
+    border-radius: 50%;
+
+    path {
+      fill: #0046FF;
+    }
+
+    &_active {
+      box-shadow: 0 0 18px 6px #0046FF;
+    }
+  }
+}

@@ -1,4 +1,3 @@
-import { ReactGridLayoutProps } from 'react-grid-layout';
 import useZustand from 'react-use-zustand';
 import { useStateCustom } from '@packages/hooks';
 
@@ -10,28 +9,37 @@ const gridLayoutStore = useZustand<IStore>({
     keys: ['isDraggable', 'isResizable'],
 });
 
-function use(props: IProps): IProps {
-    const { items, layoutName, layoutProps } = props;
+function use(props?: IProps) {
+    const { items, layoutName, layoutProps } = props || {};
+    const draggable = gridLayoutStore.use.isDraggable();
+    const resize = gridLayoutStore.use.isResizable();
 
-    const isDraggable = gridLayoutStore.use.isDraggable();
-    const isResize = gridLayoutStore.use.isResizable();
-
-    const widgets = useStateCustom<IGridLayout.Items>(items, {
+    const itemsState = useStateCustom<IGridLayout.Items>(items, {
         storage: {
             key: layoutName,
         },
     });
 
     const changeLayout = (layout: any) => {
-        widgets.set(layout);
+        itemsState.set(layout);
+    };
+
+    const changeDraggable = () => {
+        draggable.set((prev) => !prev);
+    };
+
+    const changeResizable = () => {
+        resize.set((prev) => !prev);
     };
 
     return {
-        items: widgets.value,
+        items: itemsState.value,
+        changeDraggable,
+        changeResizable,
         layoutProps: {
             ...layoutProps,
-            isDraggable: isDraggable.value,
-            isResizable: isResize.value,
+            isDraggable: draggable.value,
+            isResizable: resize.value,
             onLayoutChange: changeLayout,
         },
     };

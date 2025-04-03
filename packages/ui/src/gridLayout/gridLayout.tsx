@@ -16,7 +16,7 @@ const GridLayout = (props: IProps) => {
     const data = useMemo((): IData => {
         const defaultData: IData = { layout: [], children: [] };
 
-        return items.reduce((acc, item, index) => {
+        return items?.reduce((acc, item, index) => {
             acc.layout.push(item);
             acc.children.push(
                 <div className={styles.item} key={item.i} data-grid={item}>

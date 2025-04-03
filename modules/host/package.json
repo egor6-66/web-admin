@@ -8,6 +8,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@packages/utils": "*",
     "@packages/hooks": "*",
     "@packages/styles": "*",
     "@packages/types": "*",
