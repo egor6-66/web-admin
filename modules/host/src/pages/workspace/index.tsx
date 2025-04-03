@@ -22,9 +22,9 @@ const WorkspacePage = () => {
         const arr: any = [];
 
         if (availableModules?.modules) {
-            Object.entries(availableModules?.modules).forEach(([key, val]: any) => {
-                if (key !== 'host') {
-                    arr.push({ displayName: val.manifest.displayName, name: val.manifest.name });
+            availableModules?.modules.forEach((i: any) => {
+                if (i.name !== 'host') {
+                    arr.push({ displayName: i.name, name: i.name });
                 }
             });
         }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { GridLayout } from '@packages/ui';
 
 import { AddConfig, AddRecipient, ConfigsList, RecipientsList } from '@/widgets';

@@ -1,6 +1,6 @@
 {
   "name": "host",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "devserver": "webpack serve --env mode=development devServer=true --port 3000",
     "build:dev": "webpack --env mode=development",

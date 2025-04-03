@@ -23,7 +23,6 @@ const ModulePage = () => {
 
     return (
         <div className={styles.wrapper}>
-            <div className={styles.header}>sefesf</div>
             <div className={styles.module}>{<Module />}</div>
         </div>
     );

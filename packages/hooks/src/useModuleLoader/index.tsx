@@ -12,7 +12,7 @@ export const useModuleLoader = (props: IMicroservice) => {
         if (!disabled) {
             const moduleName = scope.toUpperCase();
 
-            if (window.location.port) {
+            if (window.location.port === '3000') {
                 setStatus('error');
                 setMessage(`Нельзя загрузить модуль ${moduleName} в режиме девсервера`);
             } else {
