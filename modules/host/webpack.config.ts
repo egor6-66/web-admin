@@ -7,10 +7,11 @@ export default (env: IEnvVariables) => {
     return configuration({
         mode: env.mode ?? 'development',
         paths: {
-            static: '/',
+            static: env.devServer ? '/' : './',
             ...defaultPaths(__dirname),
-            output: path.resolve(__dirname, '..', '..', 'remote', 'modules', packageJson.name),
+            envFiles: [path.resolve('..', '..', `.env`), path.resolve(`.env.${env.mode}`)],
         },
+        buildName: `${packageJson.name}_${packageJson.version}`,
         devServer: {
             active: env.devServer,
             port: env.port ?? 3000,
@@ -32,6 +33,7 @@ export default (env: IEnvVariables) => {
         manifest: {
             name: packageJson.name,
             displayName: 'HOST',
+            version: packageJson.version,
         },
     });
 };

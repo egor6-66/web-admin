@@ -14,6 +14,7 @@ export interface IBuildPaths {
     public: string;
     output: string;
     src: string;
+    envFiles?: Array<string>;
 }
 
 interface ISharedConfig {
@@ -61,4 +62,5 @@ export interface IBuildOptions {
     moduleFederations?: IModuleFederations;
     aliases: Record<string, string>;
     manifest: IManifest;
+    buildName: string;
 }

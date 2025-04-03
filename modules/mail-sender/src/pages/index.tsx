@@ -1,11 +1,9 @@
 import React from 'react';
 import { useRouting, useStateCustom } from '@packages/hooks';
-import { GridLayout, IGridLayout } from '@packages/ui';
+import { GridLayout, Icons, IGridLayout } from '@packages/ui';
+import classNames from 'classnames';
 
-import { useConfig } from '@/features';
-import { ConfigEditor, ServersUrls, Settings } from '@/widgets';
-
-import pc from '../../package.json';
+import { RecipientController, SenderController } from '@/widgets';
 
 import styles from './styles.module.scss';
 
@@ -13,38 +11,60 @@ const Pages = () => {
     const activeEditor = useStateCustom(true);
     const { getParams } = useRouting();
     const params = getParams();
+    const activeDnD = useStateCustom(false);
+    const activeResize = useStateCustom(false);
 
-    const { getConfig, getBuilds } = useConfig();
-    const { data } = getBuilds(params.module);
+    const widgets = useStateCustom<IGridLayout.Items>(
+        [
+            { i: 'recipient', w: 10, h: 5, x: 0, y: 0 },
+            { i: 'sender', w: 10, h: 5, x: 5, y: 0 },
+        ],
+        {
+            storage: {
+                key: 'mail_sender_grid',
+            },
+        }
+    );
 
-    const widgets: IGridLayout.Items = [
-        { name: 'settings', grid: { w: 5, h: 5, x: 0, y: 0, static: !activeEditor.value } },
-        { name: 'servers_urls', grid: { w: 5, h: 5, x: 5, y: 0, static: !activeEditor.value } },
-        { name: 'config_editor', grid: { w: 10, h: 4, x: 0, y: 5, static: !activeEditor.value } },
-    ];
+    const handleChangeLayout = (layout: any) => {
+        widgets.set(layout);
+    };
 
     return (
         <div className={styles.wrapper}>
-            <div className={styles.header}>
-                <div style={{ cursor: 'pointer' }} onClick={activeEditor.toggle}>
-                    editor
+            <div className={styles.layoutControls}>
+                <div
+                    className={classNames({ [styles.toggleLayoutRedactor]: true, [styles.toggleLayoutRedactor_active]: activeDnD.value })}
+                    onClick={activeDnD.toggle}
+                >
+                    <Icons icon={'layout'} />
+                </div>
+                <div
+                    className={classNames({ [styles.toggleLayoutRedactor]: true, [styles.toggleLayoutRedactor_active]: activeResize.value })}
+                    onClick={activeResize.toggle}
+                >
+                    <Icons icon={'resize'} />
                 </div>
             </div>
-            <GridLayout items={widgets} className={styles.grid}>
-                {(item) => {
-                    switch (item.name) {
-                        case 'settings':
-                            return <Settings />;
+            <div className={styles.widgets}>
+                <GridLayout
+                    items={widgets.value}
+                    className={styles.grid}
+                    isDraggable={activeDnD.value}
+                    isResizable={activeResize.value}
+                    onLayoutChange={handleChangeLayout}
+                >
+                    {(item) => {
+                        switch (item.i) {
+                            case 'recipient':
+                                return <RecipientController />;
 
-                        case 'servers_urls':
-                            return <ServersUrls />;
-
-                        case 'config_editor':
-                            return <ConfigEditor />;
-                    }
-                }}
-            </GridLayout>
-            <div>ВЕРСИЯ: {pc.version}</div>
+                            case 'sender':
+                                return <SenderController />;
+                        }
+                    }}
+                </GridLayout>
+            </div>
         </div>
     );
 };

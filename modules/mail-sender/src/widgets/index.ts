@@ -1,5 +1,4 @@
-import ConfigEditor from './config-editor';
-import ServersUrls from './servers-urls';
-import Settings from './settings';
+import RecipientController from './recipientController';
+import SenderController from './senderController';
 
-export { ConfigEditor, ServersUrls, Settings };
+export { RecipientController, SenderController };

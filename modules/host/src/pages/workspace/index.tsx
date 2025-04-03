@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useMemo } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useRouting } from '@packages/hooks';
 import { AnimatePresence, Navigation } from '@packages/ui';
-import log from 'eslint-plugin-react/lib/util/log';
 
 import { useModules } from '@/features';
 import { AppState } from '@/widgets';
@@ -19,19 +18,24 @@ const WorkspacePage = () => {
     const { data: availableModules } = getAvailableModules();
     const params = getParams();
 
-    useEffect(() => {
-        if (!params.module && availableModules?.modules) {
-            navigateWithParam('', 'module', availableModules.modules[0].manifest.name);
+    const modules = useMemo(() => {
+        const arr: any = [];
+
+        if (availableModules?.modules) {
+            Object.entries(availableModules?.modules).forEach(([key, val]: any) => {
+                if (key !== 'host') {
+                    arr.push({ displayName: val.manifest.displayName, name: val.manifest.name });
+                }
+            });
         }
+
+        return arr;
     }, [availableModules]);
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.navigations}>
-                <Navigation
-                    items={availableModules?.modules.map((i: any) => ({ ...i.manifest, builds: i.builds }))}
-                    handleNavClick={(item: any) => navigateWithParam('', 'module', item.name)}
-                />
+                <Navigation items={modules} handleNavClick={(item: any) => navigateWithParam('', 'module', item.name)} />
                 <AppState operatorName={'Egor'} />
             </div>
             <AnimatePresence visible={true} className={styles.content} animationKey={params.module}>

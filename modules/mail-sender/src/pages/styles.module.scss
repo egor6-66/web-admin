@@ -4,14 +4,39 @@
   @include mixins.flex-column(center, center);
   @include mixins.box-size(100%, 100%);
 
-  .header{
-    @include mixins.flex(space-between, center);
-    @include mixins.box-size(100%, 30px);
+  .layoutControls{
+    @include mixins.box-size(100%, auto);
+    @include mixins.flex(flex-end, center);
+    padding-top: 12px;
+    padding-right: 12px;
+    gap: 12px;
+
+    .toggleLayoutRedactor {
+      @include mixins.box-min-size(30px, 30px);
+      @include mixins.flex(center, center);
+      cursor: pointer;
+      transition: box-shadow 0.25s;
+      border-radius: 50%;
+
+      path {
+        fill: #0046FF;
+      }
+
+      &_active {
+        box-shadow: 0 0 18px 6px #0046FF;
+      }
+    }
   }
 
-  .grid{
+  .widgets {
     @include mixins.box-size(100%, 100%);
-    flex: 1;
-    overflow: auto;
+    @include mixins.flex-column;
+    gap: 12px;
+
+    .grid {
+      @include mixins.box-size(100%, 100%);
+      flex: 1;
+      overflow: auto;
+    }
   }
 }

@@ -1,9 +1,9 @@
-import { useNavigate } from 'react-router-dom';
+import { useRouting } from '@packages/hooks';
 
 import { IBaseFields } from './interfaces';
 
 function useAuth() {
-    const navigate = useNavigate();
+    const { navigate } = useRouting();
 
     const login = async (data: IBaseFields) => {
         if (data.login === 'ADMIN' && data.pass === '12345') {
@@ -14,7 +14,7 @@ function useAuth() {
     };
 
     const logout = () => {
-        navigate('/config-editor');
+        navigate('/auth');
     };
 
     return { login, logout };

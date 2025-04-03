@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "./src/index.ts",
   "dependencies": {
-    "react-use-zustand": "^1.0.25"
+    "react-use-zustand": "^1.0.25",
+    "socket.io-client": "^4.8.1"
   }
 }

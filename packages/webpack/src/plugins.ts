@@ -18,6 +18,7 @@ export function plugins({ mode, paths, analyzer, moduleFederations, devServer, m
     const plugins: Configuration['plugins'] = [
         new HtmlWebpackPlugin({
             template: paths.html,
+
             // favicon: path.resolve(paths.public, 'favicon.ico'),
             publicPath: paths.static,
             excludeChunks: [manifest.name],
@@ -25,9 +26,6 @@ export function plugins({ mode, paths, analyzer, moduleFederations, devServer, m
 
         new DefinePlugin({
             __MODE__: JSON.stringify(mode),
-        }),
-        new Dotenv({
-            path: path.resolve(`.env.${mode}`),
         }),
         new WebpackManifestPlugin({
             fileName: 'manifest.json',
@@ -37,6 +35,16 @@ export function plugins({ mode, paths, analyzer, moduleFederations, devServer, m
             },
         }),
     ];
+
+    if (paths?.envFiles.length) {
+        paths?.envFiles.forEach((i) => {
+            plugins.push(
+                new Dotenv({
+                    path: i,
+                })
+            );
+        });
+    }
 
     if (moduleFederations && !devServer.active) {
         plugins.push(new webpack.container.ModuleFederationPlugin(moduleFederations));
@@ -48,7 +56,7 @@ export function plugins({ mode, paths, analyzer, moduleFederations, devServer, m
 
     if (isDev) {
         plugins.push(new webpack.ProgressPlugin());
-        plugins.push(new ForkTsCheckerWebpackPlugin());
+        // plugins.push(new ForkTsCheckerWebpackPlugin());
     }
 
     if (isProd) {

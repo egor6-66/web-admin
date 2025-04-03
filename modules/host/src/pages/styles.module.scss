@@ -5,6 +5,12 @@
   @include mixins.text(var(--text-primary), 14px);
   position: relative;
 
+  .moduleInfo{
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+  }
+
   .message{
     display: flex;
     flex-direction: column;

@@ -15,7 +15,7 @@ function configuration(options: IBuildOptions): webpack.Configuration {
         mode: mode ?? 'development',
         entry: paths.entry,
         output: {
-            path: path.join(paths.output, options.version),
+            path: path.join(paths.output, options.buildName),
             filename: '[name].[contenthash].js',
             clean: true,
         },

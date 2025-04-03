@@ -1,3 +1,4 @@
-import useConfig from './useConfig';
+import useRecipient from './useRecipient';
+import useSender from './useSender';
 
-export { useConfig };
+export { useRecipient, useSender };

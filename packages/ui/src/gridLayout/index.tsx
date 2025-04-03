@@ -5,12 +5,11 @@ import classNames from 'classnames';
 
 import { IData, IProps } from './interfaces';
 
-import 'react-grid-layout/css/styles.css';
-import 'react-resizable/css/styles.css';
+import './styles.css';
 import styles from './styles.module.scss';
 
 const GridLayout = (props: IProps) => {
-    const { children, items, className } = props;
+    const { children, items, className, ...layoutProps } = props;
     const ResponsiveLayout = useMemo(() => WidthProvider(Responsive), []);
     const windowsSize = useWindowSize();
 
@@ -18,16 +17,16 @@ const GridLayout = (props: IProps) => {
         const defaultData: IData = { layout: [], children: [] };
 
         return items.reduce((acc, item, index) => {
-            acc.layout.push({ ...item.grid, i: item.name });
+            acc.layout.push(item);
             acc.children.push(
-                <div className={styles.item} key={item.name} data-grid={item.grid}>
+                <div className={styles.item} key={item.i} data-grid={item}>
                     {children(item, index)}
                 </div>
             );
 
             return acc;
         }, defaultData);
-    }, [items]);
+    }, [items, layoutProps.isResizable, layoutProps.isDraggable]);
 
     const cols = 10;
     const rows = 10;
@@ -35,12 +34,7 @@ const GridLayout = (props: IProps) => {
 
     return (
         <ResponsiveLayout
-            onLayoutChange={(l) => {
-                console.log(l);
-            }}
-            onResize={() => {
-                console.log('res');
-            }}
+            {...layoutProps}
             maxRows={rows}
             breakpoints={{ lg: 5000 }}
             rowHeight={rowHeight}
@@ -49,13 +43,6 @@ const GridLayout = (props: IProps) => {
             cols={{ lg: cols }}
             layouts={{ lg: data.layout }}
             className={classNames(className, styles.wrapper)}
-            onDragStart={(s) => {
-                console.log(s);
-            }}
-            // preventCollision
-            onDragStop={(e) => {
-                console.log('dw');
-            }}
         >
             {data.children}
         </ResponsiveLayout>

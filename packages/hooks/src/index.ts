@@ -1,4 +1,5 @@
 import useAccount from './useAccount';
+import useApi from './useApi';
 import useClickAway from './useClickAway';
 import useDebounce from './useDebounce';
 import useEffectOnce from './useEffectOnce';
@@ -12,9 +13,11 @@ import useStateCustom from './useStateCustom';
 import useThemes from './useThemes';
 import useTimeoutFn from './useTimeoutFn';
 import useWindowSize from './useWindowSize';
+import useWS from './useWS';
 
 export {
     useAccount,
+    useApi,
     useClickAway,
     useDebounce,
     useEffectOnce,
@@ -28,4 +31,5 @@ export {
     useThemes,
     useTimeoutFn,
     useWindowSize,
+    useWS,
 };

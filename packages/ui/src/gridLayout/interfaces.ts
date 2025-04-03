@@ -1,19 +1,16 @@
 import { ReactNode } from 'react';
-import { Layout } from 'react-grid-layout';
+import { ItemCallback, Layout, ReactGridLayoutProps } from 'react-grid-layout';
 
-export interface IItem {
-    name: string;
-    displayName?: string;
-    grid: Omit<Layout, 'i'>;
-}
+export type IItem = Layout;
 
-export interface IProps {
+// @ts-ignore
+export interface IProps extends ReactGridLayoutProps {
     items: Items;
     children: (item: IItem, index: number) => ReactNode;
-    className?: string;
 }
+
 export interface IData {
     layout: Array<Layout>;
     children: Array<ReactNode>;
 }
-export type Items = Array<IItem>;
+export type Items = Array<Layout>;

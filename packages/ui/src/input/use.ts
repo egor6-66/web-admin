@@ -7,7 +7,7 @@ import { IUseProps } from './interfaces';
 function use(props: IUseProps) {
     const { debounceDelay, initValue, debounce, cut, inputAttrs, name, ...moreProps } = props;
     const inputRef = useRef<HTMLInputElement>(null);
-    const [state, setState] = useState(initValue);
+    const [state, setState] = useState(initValue || '');
     const [errorMessage, setErrorMessage] = useState('');
 
     const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {

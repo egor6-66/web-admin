@@ -7,11 +7,11 @@ export default (env: IEnvVariables) => {
     return configuration({
         mode: env.mode ?? 'development',
         paths: {
-            static: env.devServer ? '/' : '/mail_sender',
+            static: env.devServer ? '/' : './',
             ...defaultPaths(__dirname),
-            output: path.resolve(__dirname, '..', '..', 'remote', 'modules', packageJson.name),
+            envFiles: [path.resolve('..', '..', `.env`), path.resolve(`.env.${env.mode}`)],
         },
-
+        buildName: `${packageJson.name}_${packageJson.version}`,
         devServer: {
             active: env.devServer,
             port: env.port ?? 3000,
@@ -35,6 +35,7 @@ export default (env: IEnvVariables) => {
         manifest: {
             name: packageJson.name,
             displayName: 'MAIL SENDER',
+            version: packageJson.version,
         },
     });
 };

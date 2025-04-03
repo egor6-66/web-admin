@@ -42,7 +42,7 @@ const Navigation = (props: IProps) => {
                         </div>
                     );
                 })}
-                {lineData.value.width && <motion.div animate={{ width: lineData.value.width, left: lineData.value.positionX }} className={styles.line} />}
+                {lineData.value.width ? <motion.div animate={{ width: lineData.value.width, left: lineData.value.positionX }} className={styles.line} /> : null}
             </div>
         </div>
     );
