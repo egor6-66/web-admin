@@ -2,25 +2,31 @@ import React from 'react';
 import { useStateCustom } from '@packages/hooks';
 import { AnimatePresence, Button, Input } from '@packages/ui';
 
+import { configSchema, ConfigType } from '@/entities';
+
 import styles from './styles.module.scss';
 
 const AddConfig = () => {
     const error = useStateCustom('');
 
-    const config = useStateCustom([]);
+    const config = useStateCustom(configSchema.getDefault());
 
     const handleChangeConfig = (key: string, value: string) => {
         config.set((prev: any) => ({ ...prev, [key]: value }));
     };
 
+    console.log('dwad');
+
     const sendConfig = async () => {
         try {
-            // await configSchema.current.validate(config.value);
+            await configSchema.validate(config.value);
             alert(JSON.stringify(config.value, null, 2));
         } catch (e) {
             error.set(e.message);
         }
     };
+
+    console.log(config.value);
 
     return (
         <div className={styles.wrapper}>

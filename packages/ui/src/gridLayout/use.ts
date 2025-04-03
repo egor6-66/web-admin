@@ -7,6 +7,10 @@ import { IProps, IStore } from './interfaces';
 
 const gridLayoutStore = useZustand<IStore>({
     keys: ['isDraggable', 'isResizable'],
+    default: {
+        isDraggable: false,
+        isResizable: false,
+    },
 });
 
 function use(props?: IProps) {

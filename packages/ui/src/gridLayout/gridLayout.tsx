@@ -26,7 +26,7 @@ const GridLayout = (props: IProps) => {
 
             return acc;
         }, defaultData);
-    }, [items]);
+    }, [items, layoutProps.isResizable, layoutProps.isDraggable]);
 
     const cols = 10;
     const rows = 10;

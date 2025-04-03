@@ -1,4 +1,4 @@
-import { addMethod, InferType, number, NumberSchema, object, Schema, string, StringSchema } from 'yup';
+import { addMethod, InferType, ISchema, number, NumberSchema, object, ObjectSchema, Schema, string, StringSchema } from 'yup';
 
 import validators from './validators';
 
@@ -14,8 +14,8 @@ interface IString extends StringSchema<string, any, undefined, ''> {
 
 interface IYup {
     string: () => IString;
-    number: any;
-    object: any;
+    number: () => NumberSchema;
+    object: (obj: Record<string, ISchema<any>>) => ObjectSchema<any>;
 }
 
 const yup = {
