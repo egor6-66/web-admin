@@ -31,8 +31,6 @@ const GridLayout = (props: IProps) => {
     const cols = 10;
     const rows = 10;
     const rowHeight = ((windowsSize.height / 100) * globalPercent - uselessSpace) / rows;
-    console.log(rowHeight);
-    console.log('full', rowHeight * rows);
 
     return (
         <ResponsiveLayout

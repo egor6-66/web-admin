@@ -14,7 +14,7 @@ const gridLayoutStore = useZustand<IStore>({
 });
 
 function use(props?: IProps) {
-    const { items, layoutName, layoutProps } = props || {};
+    const { items, layoutName, layoutProps, ...more } = props || {};
     const draggable = gridLayoutStore.use.isDraggable();
     const resize = gridLayoutStore.use.isResizable();
 
@@ -37,6 +37,7 @@ function use(props?: IProps) {
     };
 
     return {
+        ...more,
         items: itemsState.value,
         changeDraggable,
         changeResizable,
