@@ -19,9 +19,9 @@ function use(props?: IProps) {
     const resize = gridLayoutStore.use.isResizable();
 
     const itemsState = useStateCustom<IGridLayout.Items>(items, {
-        storage: {
-            key: layoutName,
-        },
+        // storage: {
+        //     key: layoutName,
+        // },
     });
 
     const changeLayout = (layout: any) => {

@@ -9,7 +9,7 @@ import './styles.css';
 import styles from './styles.module.scss';
 
 const GridLayout = (props: IProps) => {
-    const { children, items, className, layoutProps } = props;
+    const { globalPercent = 100, children, items, className, layoutProps, uselessSpace = 150 } = props;
     const ResponsiveLayout = useMemo(() => WidthProvider(Responsive), []);
     const windowsSize = useWindowSize();
 
@@ -30,14 +30,16 @@ const GridLayout = (props: IProps) => {
 
     const cols = 10;
     const rows = 10;
-    const rowHeight = (windowsSize.height - 200) / rows;
+    const rowHeight = ((windowsSize.height / 100) * globalPercent - uselessSpace) / rows;
+    console.log(rowHeight);
+    console.log('full', rowHeight * rows);
 
     return (
         <ResponsiveLayout
             {...layoutProps}
             maxRows={rows}
-            breakpoints={{ lg: 5000 }}
-            rowHeight={rowHeight}
+            breakpoints={{ lg: 0 }}
+            rowHeight={Math.floor(rowHeight)}
             resizeHandles={['n', 'e', 's', 'w', 'ne', 'se', 'nw', 'sw']}
             useCSSTransforms
             cols={{ lg: cols }}

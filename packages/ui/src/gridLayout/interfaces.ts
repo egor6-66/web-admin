@@ -14,6 +14,8 @@ export interface IProps {
     layoutProps?: ReactGridLayoutProps;
     children?: (item: IItem, index: number) => ReactNode;
     className?: string;
+    uselessSpace?: number;
+    globalPercent?: number;
 }
 
 export interface IData {

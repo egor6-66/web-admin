@@ -1,3 +1,5 @@
+import { configMediaQuery, useElementSizeObserver, useSizeObserver, useWindowSizeObserver } from 'react-screen-hooks';
+
 import useAccount from './useAccount';
 import useClickAway from './useClickAway';
 import useDebounce from './useDebounce';
@@ -19,15 +21,18 @@ export {
     useClickAway,
     useDebounce,
     useEffectOnce,
+    useElementSizeObserver,
     useIndexDB,
     useModule,
     useModuleLoader,
     useRafState,
     useRouting,
+    useSizeObserver,
     useStandalone,
     useStateCustom,
     useThemes,
     useTimeoutFn,
     useWindowSize,
+    useWindowSizeObserver,
     useWS,
 };

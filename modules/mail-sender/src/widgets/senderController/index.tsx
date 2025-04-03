@@ -9,9 +9,10 @@ import styles from './styles.module.scss';
 const SenderController = () => {
     const layout = GridLayout.use({
         layoutName: 'mail_sender_sender_controller_layout',
+        uselessSpace: 0,
         items: [
-            { i: 'addConfig', w: 10, h: 5, x: 0, y: 0 },
-            { i: 'configList', w: 10, h: 5, x: 5, y: 0 },
+            { i: 'addConfig', w: 5, h: 10, x: 0, y: 0 },
+            { i: 'configList', w: 5, h: 10, x: 5, y: 0 },
         ],
     });
 
@@ -22,10 +23,10 @@ const SenderController = () => {
                     {(item) => {
                         switch (item.i) {
                             case 'addConfig':
-                                return <AddConfig />;
+                                return <div>d</div>;
 
                             case 'configList':
-                                return <ConfigsList />;
+                                return <div>de</div>;
                         }
                     }}
                 </GridLayout>
