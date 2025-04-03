@@ -1,0 +1,57 @@
+@use '@packages/styles/src/mixins';
+
+.wrapper {
+  @include mixins.box-size(100%, 100%);
+  @include mixins.flex-column;
+  border-radius: 12px;
+  padding: 12px;
+  background-color: var(--bg-primary);
+  gap: 22px;
+
+  .title {
+    @include mixins.text(var(--text-primary), 16px);
+  }
+
+  .container {
+    @include mixins.text(var(--text-primary), 14px);
+    @include mixins.box-size(100%, 100%);
+    @include mixins.flex;
+    gap: 8px;
+
+    .list {
+      @include mixins.box-size(100%, 100%);
+      @include mixins.flex-column;
+      gap: 8px;
+
+      .item {
+        cursor: pointer;
+        transition: 0.25s;
+
+        &_active {
+          color: #396FFF;
+        }
+      }
+    }
+
+    .preview {
+      //@include mixins.text(var(--text-primary), 14px);
+      @include mixins.box-size(100%, 100%);
+      @include mixins.flex-column;
+      background-color: var(--bg-substrate);
+      border-radius: var(--border-radius);
+      padding: 12px;
+      gap: 8px;
+
+      .fields{
+        @include mixins.flex-column;
+        gap: 6px;
+        flex: 1;
+        .field {
+          @include mixins.box-size(100%, auto);
+          @include mixins.flex;
+          gap: 8px;
+        }
+      }
+    }
+  }
+}

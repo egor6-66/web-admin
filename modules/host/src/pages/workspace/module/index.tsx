@@ -1,11 +1,12 @@
 import React from 'react';
-import { useApi, useModuleLoader, useRouting } from '@packages/hooks';
+import { useModuleLoader, useRouting } from '@packages/hooks';
+import { api } from '@packages/utils';
 
 import styles from './styles.module.scss';
 
 const ModulePage = () => {
     const { getParams } = useRouting();
-    const { baseUrl } = useApi();
+    const { baseUrl } = api;
     const { module } = getParams();
     const isHost = module === 'host';
 

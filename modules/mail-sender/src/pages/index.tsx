@@ -1,7 +1,7 @@
 import React from 'react';
 import { GridLayout } from '@packages/ui';
 
-import { RecipientController, SenderController } from '@/widgets';
+import { AddConfig, AddRecipient, ConfigsList, RecipientsList } from '@/widgets';
 
 import styles from './styles.module.scss';
 
@@ -9,8 +9,10 @@ const Pages = () => {
     const layout = GridLayout.use({
         layoutName: 'mail_sender_main_layout',
         items: [
-            { i: 'recipient', w: 10, h: 5, x: 0, y: 0 },
-            { i: 'sender', w: 10, h: 5, x: 0, y: 5 },
+            { i: 'addConfig', w: 5, h: 5, x: 0, y: 0 },
+            { i: 'configList', w: 5, h: 5, x: 5, y: 0 },
+            { i: 'addRecipient', w: 5, h: 5, x: 0, y: 5 },
+            { i: 'recipientList', w: 5, h: 5, x: 5, y: 5 },
         ],
     });
 
@@ -21,11 +23,17 @@ const Pages = () => {
                 <GridLayout {...layout} className={styles.grid}>
                     {(item) => {
                         switch (item.i) {
-                            case 'recipient':
-                                return <RecipientController />;
+                            case 'addConfig':
+                                return <AddConfig />;
 
-                            case 'sender':
-                                return <SenderController />;
+                            case 'configList':
+                                return <ConfigsList />;
+
+                            case 'addRecipient':
+                                return <AddRecipient />;
+
+                            case 'recipientList':
+                                return <RecipientsList />;
                         }
                     }}
                 </GridLayout>

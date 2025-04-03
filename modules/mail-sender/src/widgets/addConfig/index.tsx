@@ -2,31 +2,29 @@ import React from 'react';
 import { useStateCustom } from '@packages/hooks';
 import { AnimatePresence, Button, Input } from '@packages/ui';
 
-import { configSchema, ConfigType } from '@/entities';
+import { configSchema, configStore } from '@/entities';
 
 import styles from './styles.module.scss';
 
 const AddConfig = () => {
     const error = useStateCustom('');
 
+    const configs = configStore.use.configs();
     const config = useStateCustom(configSchema.getDefault());
 
     const handleChangeConfig = (key: string, value: string) => {
         config.set((prev: any) => ({ ...prev, [key]: value }));
     };
 
-    console.log('dwad');
-
     const sendConfig = async () => {
         try {
             await configSchema.validate(config.value);
-            alert(JSON.stringify(config.value, null, 2));
+            configs.set([config.value, ...configs.value]);
+            config.set(configSchema.getDefault());
         } catch (e) {
             error.set(e.message);
         }
     };
-
-    console.log(config.value);
 
     return (
         <div className={styles.wrapper}>
@@ -35,15 +33,14 @@ const AddConfig = () => {
                 {Object.entries(config.value).map(([key, val]) => (
                     <Input
                         key={key}
-                        trim
                         displayName={key}
                         nameStyle={{
                             width: 60,
                         }}
-                        value={val as string}
                         inputAttrs={{
+                            value: typeof val === 'undefined' ? '' : (val as string),
                             onChange: (e) => {
-                                handleChangeConfig(key, e.target.value);
+                                handleChangeConfig(key, e.target.value.trim());
                                 error.clear();
                             },
                         }}

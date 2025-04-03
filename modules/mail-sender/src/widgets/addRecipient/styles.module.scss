@@ -1,0 +1,36 @@
+@use '@packages/styles/src/mixins';
+
+.wrapper {
+  @include mixins.box-size(100%, 100%);
+  @include mixins.flex-column;
+  border-radius: 12px;
+  padding: 12px;
+  background-color: var(--bg-primary);
+  gap: 22px;
+
+  .title {
+    @include mixins.text(var(--text-primary), 16px);
+  }
+
+  .fields {
+    @include mixins.flex-column;
+    flex: 1;
+    gap: 4px;
+  }
+
+  .controls {
+    @include mixins.box-size(100%, auto);
+    margin-top: 8px;
+    position: relative;
+
+    .error {
+      @include mixins.box-size(100%, auto);
+      @include mixins.text(var(--text-red), 14px);
+      text-align: center;
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

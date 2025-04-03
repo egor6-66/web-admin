@@ -35,7 +35,6 @@
 
     .grid {
       @include mixins.box-size(100%, 100%);
-      background-color: #008D1F;
       flex: 1;
     }
   }

@@ -9,7 +9,7 @@ import './styles.css';
 import styles from './styles.module.scss';
 
 const GridLayout = (props: IProps) => {
-    const { globalPercent = 100, children, items, className, layoutProps, uselessSpace = 150 } = props;
+    const { globalPercent = 100, children, items, className, layoutProps, uselessSpace = 155 } = props;
     const ResponsiveLayout = useMemo(() => WidthProvider(Responsive), []);
     const windowsSize = useWindowSize();
 

@@ -1,10 +1,10 @@
-import { useApi } from '@packages/hooks';
+import { api } from '@packages/utils';
 import { useQuery } from '@tanstack/react-query';
 
 const staleMin = 5;
 
 function useModules() {
-    const { containerApi } = useApi();
+    const { containerApi } = api;
 
     const getAvailableModules = () => {
         return useQuery<any>({
