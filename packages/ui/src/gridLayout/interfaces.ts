@@ -1,12 +1,19 @@
 import { ReactNode } from 'react';
-import { ItemCallback, Layout, ReactGridLayoutProps } from 'react-grid-layout';
+import { Layout, ReactGridLayoutProps } from 'react-grid-layout';
 
 export type IItem = Layout;
 
-// @ts-ignore
-export interface IProps extends ReactGridLayoutProps {
-    items: Items;
-    children: (item: IItem, index: number) => ReactNode;
+export interface IStore {
+    isDraggable: boolean;
+    isResizable: boolean;
+}
+
+export interface IProps {
+    layoutName?: string;
+    items?: Items;
+    layoutProps?: ReactGridLayoutProps;
+    children?: (item: IItem, index: number) => ReactNode;
+    className?: string;
 }
 
 export interface IData {

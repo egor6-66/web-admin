@@ -14,6 +14,7 @@ import useThemes from './useThemes';
 import useTimeoutFn from './useTimeoutFn';
 import useWindowSize from './useWindowSize';
 import useWS from './useWS';
+import useYup, * as IUseYup from './useYup';
 
 export {
     useAccount,
@@ -32,4 +33,6 @@ export {
     useTimeoutFn,
     useWindowSize,
     useWS,
+    useYup,
 };
+export type { IUseYup };

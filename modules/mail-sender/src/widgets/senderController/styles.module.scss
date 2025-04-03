@@ -2,9 +2,21 @@
 
 .wrapper {
   @include mixins.box-size(100%, 100%);
-  @include mixins.flex-column(center, center, 32px);
-  @include mixins.text(var(--text-primary), 22px);
+  @include mixins.flex-column;
   background-color: var(--bg-primary);
   border-radius: 12px;
-  padding: 36px 12px;
+  padding: 12px;
+  gap: 12px;
+
+  .widgets {
+    @include mixins.box-size(100%, 100%);
+    @include mixins.flex-column;
+    gap: 12px;
+
+    .grid {
+      @include mixins.box-size(100%, 100%);
+      flex: 1;
+      overflow: auto;
+    }
+  }
 }

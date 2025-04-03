@@ -14,6 +14,7 @@ export interface IProps extends InputHTMLAttributes<HTMLInputElement> {
     debounceDelay?: number;
     debounce?: (value: string) => void;
     inputRef?: RefObject<HTMLInputElement>;
+    trim?: boolean;
 }
 
 export interface IUseProps extends Partial<IProps> {
